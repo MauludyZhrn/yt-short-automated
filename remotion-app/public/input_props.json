@@ -1,0 +1,313 @@
+{
+  "audioPath": "temp/voice_clean.mp3",
+  "bgMusicPath": "temp/bgm_history_classic_07.mp3",
+  "bgImages": [
+    "temp/bg_0_0_bg_1.jpg",
+    "temp/bg_1_0_bg_2.jpg",
+    "temp/bg_2_0_bg_3.jpg"
+  ],
+  "titleText": "PASUKAN BEBAJ BESIS MENEBUS TEMBOK",
+  "outroText": "SUKA FAKTA SEJARAH? SUBSCRIBE!",
+  "logoPath": "temp/logo_logo.png",
+  "subtitles": [
+    {
+      "word": "Pada 1790, pasukan",
+      "start": 0.0,
+      "end": 2.027,
+      "highlight": false
+    },
+    {
+      "word": "berbaju besi menabrak",
+      "start": 2.027,
+      "end": 2.906,
+      "highlight": false
+    },
+    {
+      "word": "kota Romawi di",
+      "start": 2.906,
+      "end": 3.508,
+      "highlight": false
+    },
+    {
+      "word": "Sungai Narmada, menembus",
+      "start": 3.508,
+      "end": 4.943,
+      "highlight": false
+    },
+    {
+      "word": "tembok seakan terbuat",
+      "start": 4.943,
+      "end": 5.846,
+      "highlight": false
+    },
+    {
+      "word": "dari air. Dan",
+      "start": 5.846,
+      "end": 7.086,
+      "highlight": false
+    },
+    {
+      "word": "yang bikin lo",
+      "start": 7.086,
+      "end": 7.514,
+      "highlight": false
+    },
+    {
+      "word": "merinding, mereka mengungkap",
+      "start": 7.514,
+      "end": 8.99,
+      "highlight": false
+    },
+    {
+      "word": "rahasia perang tiga",
+      "start": 8.99,
+      "end": 9.776,
+      "highlight": false
+    },
+    {
+      "word": "hari yang terlupakan.",
+      "start": 9.776,
+      "end": 11.139,
+      "highlight": false
+    },
+    {
+      "word": "Sungai Narmada, 6.000",
+      "start": 11.139,
+      "end": 12.828,
+      "highlight": false
+    },
+    {
+      "word": "kilometer panjangnya, menjadi",
+      "start": 12.828,
+      "end": 14.495,
+      "highlight": false
+    },
+    {
+      "word": "medan pertempuran pada",
+      "start": 14.495,
+      "end": 15.401,
+      "highlight": false
+    },
+    {
+      "word": "1790, ketika pasukan",
+      "start": 15.401,
+      "end": 17.742,
+      "highlight": false
+    },
+    {
+      "word": "Persia dan India",
+      "start": 17.742,
+      "end": 18.649,
+      "highlight": false
+    },
+    {
+      "word": "bersatu menaklukkan Romawi.",
+      "start": 18.649,
+      "end": 20.42,
+      "highlight": false
+    },
+    {
+      "word": "Pasukan berbaju besi,",
+      "start": 20.42,
+      "end": 21.809,
+      "highlight": false
+    },
+    {
+      "word": "dengan helm berlapis",
+      "start": 21.809,
+      "end": 22.654,
+      "highlight": false
+    },
+    {
+      "word": "besi, menembus pertahanan",
+      "start": 22.654,
+      "end": 24.125,
+      "highlight": false
+    },
+    {
+      "word": "kota dalam waktu",
+      "start": 24.125,
+      "end": 24.921,
+      "highlight": false
+    },
+    {
+      "word": "72 jam, menewaskan",
+      "start": 24.921,
+      "end": 26.711,
+      "highlight": false
+    },
+    {
+      "word": "12.000 tentara Romawi",
+      "start": 26.711,
+      "end": 28.059,
+      "highlight": false
+    },
+    {
+      "word": "dan menghancurkan benteng",
+      "start": 28.059,
+      "end": 29.125,
+      "highlight": false
+    },
+    {
+      "word": "utama. Tapi tunggu,",
+      "start": 29.125,
+      "end": 30.967,
+      "highlight": false
+    },
+    {
+      "word": "bagian paling gila",
+      "start": 30.967,
+      "end": 31.753,
+      "highlight": false
+    },
+    {
+      "word": "belum lo dengar.",
+      "start": 31.753,
+      "end": 32.837,
+      "highlight": false
+    },
+    {
+      "word": "Ternyata, pasukan tersebut",
+      "start": 32.837,
+      "end": 34.453,
+      "highlight": false
+    },
+    {
+      "word": "memakai senjata api",
+      "start": 34.453,
+      "end": 35.31,
+      "highlight": false
+    },
+    {
+      "word": "yang terbuat dari",
+      "start": 35.31,
+      "end": 35.905,
+      "highlight": false
+    },
+    {
+      "word": "batu bara, yang",
+      "start": 35.905,
+      "end": 37.024,
+      "highlight": false
+    },
+    {
+      "word": "belum diketahui sampai",
+      "start": 37.024,
+      "end": 38.0,
+      "highlight": false
+    },
+    {
+      "word": "kini. Jadi, apakah",
+      "start": 38.0,
+      "end": 39.89,
+      "highlight": false
+    },
+    {
+      "word": "pertempuran ini memicu",
+      "start": 39.89,
+      "end": 40.836,
+      "highlight": false
+    },
+    {
+      "word": "revolusi teknologi di",
+      "start": 40.836,
+      "end": 41.795,
+      "highlight": false
+    },
+    {
+      "word": "Asia? Lo penasaran?",
+      "start": 41.795,
+      "end": 44.015,
+      "highlight": false
+    },
+    {
+      "word": "Jadi, kembali ke",
+      "start": 44.55,
+      "end": 45.795,
+      "highlight": false
+    },
+    {
+      "word": "fakta gila: pasukan",
+      "start": 45.795,
+      "end": 47.253,
+      "highlight": false
+    },
+    {
+      "word": "berbaju besi menembus",
+      "start": 47.253,
+      "end": 48.215,
+      "highlight": false
+    },
+    {
+      "word": "tembok seperti air.",
+      "start": 48.215,
+      "end": 49.365,
+      "highlight": false
+    }
+  ],
+  "durationInFrames": 1485,
+  "fps": 30,
+  "theme": "history",
+  "motionCues": [
+    {
+      "type": "timeline",
+      "text": "LINIMASA",
+      "sub": "",
+      "start": 9.42,
+      "end": 13.82,
+      "items": [
+        {
+          "year": "1790",
+          "label": "Awal"
+        },
+        {
+          "year": "1790",
+          "label": "Tengah"
+        },
+        {
+          "year": "1790",
+          "label": "Akhir"
+        }
+      ]
+    },
+    {
+      "type": "year",
+      "text": "1790",
+      "sub": "",
+      "start": 15.25,
+      "end": 18.05
+    },
+    {
+      "type": "stat",
+      "text": "12.000",
+      "sub": "korban",
+      "start": 26.56,
+      "end": 29.56
+    },
+    {
+      "type": "compare",
+      "text": "KEKUATAN",
+      "sub": "batu bara",
+      "start": 34.6,
+      "end": 38.6,
+      "items": [
+        {
+          "label": "batu bara",
+          "value": 1.0
+        },
+        {
+          "label": "batu",
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "text": "REVOLUSI TEKNOLOGI DI ASIA?",
+      "sub": "",
+      "start": 40.69,
+      "end": 43.29
+    }
+  ],
+  "bgmVolume": 0.13
+}
