@@ -1,0 +1,658 @@
+{
+ "method": "pro-per-sentence",
+ "voice": "id-ID-ArdiNeural",
+ "duration": 49.53,
+ "sentences": [
+  {
+   "i": 0,
+   "rate": "+8%",
+   "pitch": "+4Hz",
+   "volume": "+6%",
+   "pause_after": 0.44,
+   "text": "Pada 1790, pasukan berbaju besi menabrak kota Romawi di Sungai Narmada, menembus tembok seakan terbuat dari air."
+  },
+  {
+   "i": 1,
+   "rate": "+5%",
+   "pitch": "+2Hz",
+   "volume": "+0%",
+   "pause_after": 0.3,
+   "text": "Dan yang bikin lo merinding, mereka mengungkap rahasia perang tiga hari yang terlupakan."
+  },
+  {
+   "i": 2,
+   "rate": "+2%",
+   "pitch": "-2Hz",
+   "volume": "+0%",
+   "pause_after": 0.3,
+   "text": "Sungai Narmada, 6.000 kilometer panjangnya, menjadi medan pertempuran pada 1790, ketika pasukan Persia dan India bersatu menaklukkan Romawi."
+  },
+  {
+   "i": 3,
+   "rate": "+2%",
+   "pitch": "+2Hz",
+   "volume": "+0%",
+   "pause_after": 0.3,
+   "text": "Pasukan berbaju besi, dengan helm berlapis besi, menembus pertahanan kota dalam waktu 72 jam, menewaskan 12.000 tentara Romawi dan menghancurkan benteng utama."
+  },
+  {
+   "i": 4,
+   "rate": "+5%",
+   "pitch": "-2Hz",
+   "volume": "+0%",
+   "pause_after": 0.3,
+   "text": "Tapi tunggu, bagian paling gila belum lo dengar."
+  },
+  {
+   "i": 5,
+   "rate": "+5%",
+   "pitch": "+2Hz",
+   "volume": "+0%",
+   "pause_after": 0.3,
+   "text": "Ternyata, pasukan tersebut memakai senjata api yang terbuat dari batu bara, yang belum diketahui sampai kini."
+  },
+  {
+   "i": 6,
+   "rate": "+3%",
+   "pitch": "+8Hz",
+   "volume": "+0%",
+   "pause_after": 0.5,
+   "text": "Jadi, apakah pertempuran ini memicu revolusi teknologi di Asia? Lo penasaran?"
+  },
+  {
+   "i": 7,
+   "rate": "+0%",
+   "pitch": "-2Hz",
+   "volume": "+0%",
+   "pause_after": 0.0,
+   "text": "Jadi, kembali ke fakta gila: pasukan berbaju besi menembus tembok seperti air."
+  }
+ ],
+ "words": [
+  {
+   "word": "Pada",
+   "start": 0.0,
+   "end": 0.105
+  },
+  {
+   "word": "1790,",
+   "start": 0.105,
+   "end": 1.656
+  },
+  {
+   "word": "pasukan",
+   "start": 1.656,
+   "end": 2.027
+  },
+  {
+   "word": "berbaju",
+   "start": 2.027,
+   "end": 2.374
+  },
+  {
+   "word": "besi",
+   "start": 2.374,
+   "end": 2.582
+  },
+  {
+   "word": "menabrak",
+   "start": 2.582,
+   "end": 2.906
+  },
+  {
+   "word": "kota",
+   "start": 2.906,
+   "end": 3.08
+  },
+  {
+   "word": "Romawi",
+   "start": 3.08,
+   "end": 3.427
+  },
+  {
+   "word": "di",
+   "start": 3.427,
+   "end": 3.508
+  },
+  {
+   "word": "Sungai",
+   "start": 3.508,
+   "end": 3.74
+  },
+  {
+   "word": "Narmada,",
+   "start": 3.74,
+   "end": 4.596
+  },
+  {
+   "word": "menembus",
+   "start": 4.596,
+   "end": 4.943
+  },
+  {
+   "word": "tembok",
+   "start": 4.943,
+   "end": 5.244
+  },
+  {
+   "word": "seakan",
+   "start": 5.244,
+   "end": 5.51
+  },
+  {
+   "word": "terbuat",
+   "start": 5.51,
+   "end": 5.846
+  },
+  {
+   "word": "dari",
+   "start": 5.846,
+   "end": 6.02
+  },
+  {
+   "word": "air.",
+   "start": 6.02,
+   "end": 6.471
+  },
+  {
+   "word": "Dan",
+   "start": 6.938,
+   "end": 7.086
+  },
+  {
+   "word": "yang",
+   "start": 7.086,
+   "end": 7.205
+  },
+  {
+   "word": "bikin",
+   "start": 7.205,
+   "end": 7.431
+  },
+  {
+   "word": "lo",
+   "start": 7.431,
+   "end": 7.514
+  },
+  {
+   "word": "merinding,",
+   "start": 7.514,
+   "end": 8.347
+  },
+  {
+   "word": "mereka",
+   "start": 8.347,
+   "end": 8.645
+  },
+  {
+   "word": "mengungkap",
+   "start": 8.645,
+   "end": 8.99
+  },
+  {
+   "word": "rahasia",
+   "start": 8.99,
+   "end": 9.359
+  },
+  {
+   "word": "perang",
+   "start": 9.359,
+   "end": 9.574
+  },
+  {
+   "word": "tiga",
+   "start": 9.574,
+   "end": 9.776
+  },
+  {
+   "word": "hari",
+   "start": 9.776,
+   "end": 10.002
+  },
+  {
+   "word": "yang",
+   "start": 10.002,
+   "end": 10.109
+  },
+  {
+   "word": "terlupakan.",
+   "start": 10.109,
+   "end": 11.139
+  },
+  {
+   "word": "Sungai",
+   "start": 11.139,
+   "end": 11.406
+  },
+  {
+   "word": "Narmada,",
+   "start": 11.406,
+   "end": 12.362
+  },
+  {
+   "word": "6.000",
+   "start": 12.362,
+   "end": 12.828
+  },
+  {
+   "word": "kilometer",
+   "start": 12.828,
+   "end": 13.208
+  },
+  {
+   "word": "panjangnya,",
+   "start": 13.208,
+   "end": 14.151
+  },
+  {
+   "word": "menjadi",
+   "start": 14.151,
+   "end": 14.495
+  },
+  {
+   "word": "medan",
+   "start": 14.495,
+   "end": 14.727
+  },
+  {
+   "word": "pertempuran",
+   "start": 14.727,
+   "end": 15.205
+  },
+  {
+   "word": "pada",
+   "start": 15.205,
+   "end": 15.401
+  },
+  {
+   "word": "1790,",
+   "start": 15.401,
+   "end": 17.093
+  },
+  {
+   "word": "ketika",
+   "start": 17.093,
+   "end": 17.362
+  },
+  {
+   "word": "pasukan",
+   "start": 17.362,
+   "end": 17.742
+  },
+  {
+   "word": "Persia",
+   "start": 17.742,
+   "end": 18.146
+  },
+  {
+   "word": "dan",
+   "start": 18.146,
+   "end": 18.306
+  },
+  {
+   "word": "India",
+   "start": 18.306,
+   "end": 18.649
+  },
+  {
+   "word": "bersatu",
+   "start": 18.649,
+   "end": 19.053
+  },
+  {
+   "word": "menaklukkan",
+   "start": 19.053,
+   "end": 19.556
+  },
+  {
+   "word": "Romawi.",
+   "start": 19.556,
+   "end": 20.42
+  },
+  {
+   "word": "Pasukan",
+   "start": 20.42,
+   "end": 20.755
+  },
+  {
+   "word": "berbaju",
+   "start": 20.755,
+   "end": 21.086
+  },
+  {
+   "word": "besi,",
+   "start": 21.086,
+   "end": 21.809
+  },
+  {
+   "word": "dengan",
+   "start": 21.809,
+   "end": 22.078
+  },
+  {
+   "word": "helm",
+   "start": 22.078,
+   "end": 22.299
+  },
+  {
+   "word": "berlapis",
+   "start": 22.299,
+   "end": 22.654
+  },
+  {
+   "word": "besi,",
+   "start": 22.654,
+   "end": 23.377
+  },
+  {
+   "word": "menembus",
+   "start": 23.377,
+   "end": 23.733
+  },
+  {
+   "word": "pertahanan",
+   "start": 23.733,
+   "end": 24.125
+  },
+  {
+   "word": "kota",
+   "start": 24.125,
+   "end": 24.419
+  },
+  {
+   "word": "dalam",
+   "start": 24.419,
+   "end": 24.664
+  },
+  {
+   "word": "waktu",
+   "start": 24.664,
+   "end": 24.921
+  },
+  {
+   "word": "72",
+   "start": 24.921,
+   "end": 25.522
+  },
+  {
+   "word": "jam,",
+   "start": 25.522,
+   "end": 26.208
+  },
+  {
+   "word": "menewaskan",
+   "start": 26.208,
+   "end": 26.711
+  },
+  {
+   "word": "12.000",
+   "start": 26.711,
+   "end": 27.311
+  },
+  {
+   "word": "tentara",
+   "start": 27.311,
+   "end": 27.617
+  },
+  {
+   "word": "Romawi",
+   "start": 27.617,
+   "end": 28.059
+  },
+  {
+   "word": "dan",
+   "start": 28.059,
+   "end": 28.23
+  },
+  {
+   "word": "menghancurkan",
+   "start": 28.23,
+   "end": 28.818
+  },
+  {
+   "word": "benteng",
+   "start": 28.818,
+   "end": 29.125
+  },
+  {
+   "word": "utama.",
+   "start": 29.125,
+   "end": 30.015
+  },
+  {
+   "word": "Tapi",
+   "start": 30.015,
+   "end": 30.17
+  },
+  {
+   "word": "tunggu,",
+   "start": 30.17,
+   "end": 30.967
+  },
+  {
+   "word": "bagian",
+   "start": 30.967,
+   "end": 31.36
+  },
+  {
+   "word": "paling",
+   "start": 31.36,
+   "end": 31.551
+  },
+  {
+   "word": "gila",
+   "start": 31.551,
+   "end": 31.753
+  },
+  {
+   "word": "belum",
+   "start": 31.753,
+   "end": 31.967
+  },
+  {
+   "word": "lo",
+   "start": 31.967,
+   "end": 32.075
+  },
+  {
+   "word": "dengar.",
+   "start": 32.075,
+   "end": 32.837
+  },
+  {
+   "word": "Ternyata,",
+   "start": 32.837,
+   "end": 33.75
+  },
+  {
+   "word": "pasukan",
+   "start": 33.75,
+   "end": 34.095
+  },
+  {
+   "word": "tersebut",
+   "start": 34.095,
+   "end": 34.453
+  },
+  {
+   "word": "memakai",
+   "start": 34.453,
+   "end": 34.75
+  },
+  {
+   "word": "senjata",
+   "start": 34.75,
+   "end": 35.084
+  },
+  {
+   "word": "api",
+   "start": 35.084,
+   "end": 35.31
+  },
+  {
+   "word": "yang",
+   "start": 35.31,
+   "end": 35.417
+  },
+  {
+   "word": "terbuat",
+   "start": 35.417,
+   "end": 35.75
+  },
+  {
+   "word": "dari",
+   "start": 35.75,
+   "end": 35.905
+  },
+  {
+   "word": "batu",
+   "start": 35.905,
+   "end": 36.119
+  },
+  {
+   "word": "bara,",
+   "start": 36.119,
+   "end": 36.834
+  },
+  {
+   "word": "yang",
+   "start": 36.834,
+   "end": 37.024
+  },
+  {
+   "word": "belum",
+   "start": 37.024,
+   "end": 37.203
+  },
+  {
+   "word": "diketahui",
+   "start": 37.203,
+   "end": 37.679
+  },
+  {
+   "word": "sampai",
+   "start": 37.679,
+   "end": 38.0
+  },
+  {
+   "word": "kini.",
+   "start": 38.0,
+   "end": 38.732
+  },
+  {
+   "word": "Jadi,",
+   "start": 38.732,
+   "end": 39.55
+  },
+  {
+   "word": "apakah",
+   "start": 39.55,
+   "end": 39.89
+  },
+  {
+   "word": "pertempuran",
+   "start": 39.89,
+   "end": 40.29
+  },
+  {
+   "word": "ini",
+   "start": 40.29,
+   "end": 40.521
+  },
+  {
+   "word": "memicu",
+   "start": 40.521,
+   "end": 40.836
+  },
+  {
+   "word": "revolusi",
+   "start": 40.836,
+   "end": 41.237
+  },
+  {
+   "word": "teknologi",
+   "start": 41.237,
+   "end": 41.71
+  },
+  {
+   "word": "di",
+   "start": 41.71,
+   "end": 41.795
+  },
+  {
+   "word": "Asia?",
+   "start": 41.795,
+   "end": 42.305
+  },
+  {
+   "word": "Lo",
+   "start": 43.117,
+   "end": 43.335
+  },
+  {
+   "word": "penasaran?",
+   "start": 43.335,
+   "end": 44.015
+  },
+  {
+   "word": "Jadi,",
+   "start": 44.55,
+   "end": 45.365
+  },
+  {
+   "word": "kembali",
+   "start": 45.365,
+   "end": 45.715
+  },
+  {
+   "word": "ke",
+   "start": 45.715,
+   "end": 45.795
+  },
+  {
+   "word": "fakta",
+   "start": 45.795,
+   "end": 46.078
+  },
+  {
+   "word": "gila:",
+   "start": 46.078,
+   "end": 46.853
+  },
+  {
+   "word": "pasukan",
+   "start": 46.853,
+   "end": 47.253
+  },
+  {
+   "word": "berbaju",
+   "start": 47.253,
+   "end": 47.653
+  },
+  {
+   "word": "besi",
+   "start": 47.653,
+   "end": 47.865
+  },
+  {
+   "word": "menembus",
+   "start": 47.865,
+   "end": 48.215
+  },
+  {
+   "word": "tembok",
+   "start": 48.215,
+   "end": 48.553
+  },
+  {
+   "word": "seperti",
+   "start": 48.553,
+   "end": 48.878
+  },
+  {
+   "word": "air.",
+   "start": 48.878,
+   "end": 49.365
+  }
+ ]
+}

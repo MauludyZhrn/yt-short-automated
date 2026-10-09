@@ -1,0 +1,36 @@
+# Rahasia — JANGAN pernah di-commit
+.env
+.env.*
+!.env.example
+token.pickle
+client_secret.json
+credentials.json
+social_tokens.json
+google_credentials.json
+social_accounts.json
+
+# Data runtime
+publish_log.json
+metrix_bias.json
+gui_settings.json
+gui_history.json
+reports/
+output/
+remotion-app/public/temp/
+*.log
+.webview/
+
+# Python / Node
+__pycache__/
+*.pyc
+.venv/
+venv/
+node_modules/
+.vscode/
+.next/
+Hermes3D/
+
+# Build desktop
+build/
+dist/
+*.spec

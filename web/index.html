@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Shorts AutoBot</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23FFD027'/%3E%3Cpath d='M12 9l12 7-12 7z' fill='%23111317'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/uicons/regular/rounded.css">
+<link rel="stylesheet" href="/uicons/solid/rounded.css">
+<link rel="stylesheet" href="/uicons/brands/all.css">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/office.css">
+</head>
+<body>
+<aside>
+  <div class="brand">
+    <div class="logo"><i class="fi-sr-play"></i></div>
+    <div class="lb"><b>Shorts AutoBot</b><small>Automation Studio <span id="ver"></span></small></div>
+    <button id="btnCollapse" class="icon-btn" title="Ciutkan sidebar (Ctrl+B)"><i class="fi-rr-angle-double-small-left"></i></button>
+  </div>
+  <nav>
+    <button data-tab="dashboard" class="on"><i class="fi-rr-apps"></i><span class="lb">Dashboard</span></button>
+    <button data-tab="planner"><i class="fi-rr-list-check"></i><span class="lb">Content Planner</span></button>
+    <button data-tab="studio"><i class="fi-rr-clapperboard-play"></i><span class="lb">Video Studio</span></button>
+    <button data-tab="office"><i class="fi-rr-building"></i><span class="lb">Office 3D</span></button>
+    <button data-tab="analytics"><i class="fi-rr-chart-histogram"></i><span class="lb">Analytics</span></button>
+    <button data-tab="account"><i class="fi-rr-user"></i><span class="lb">Akun</span></button>
+    <button data-tab="notifications"><i class="fi-rr-bell"></i><span class="lb">Notifications</span><em class="bdg" id="bdg" hidden></em></button>
+    <button data-tab="settings"><i class="fi-rr-settings"></i><span class="lb">Settings</span></button>
+    <button data-tab="help"><i class="fi-rr-interrogation"></i><span class="lb">Help Centre</span></button>
+  </nav>
+  <div class="status"><i id="dot"></i><b id="stTxt">Stopped</b><small id="cd"></small></div>
+</aside>
+
+<main>
+  <header>
+    <h1 id="pageTitle">Dashboard</h1>
+    <div class="search"><i class="fi-rr-search"></i><input id="q" placeholder="Cari topik / niche…"><kbd>Ctrl K</kbd></div>
+    <button id="btnRefresh" class="ghost" title="Ctrl+R"><i class="fi-rr-refresh"></i> Refresh</button>
+    <button id="btnAuto" class="pri"><i class="fi-rr-play"></i> Start Automation</button>
+  </header>
+
+  <section id="dashboard" class="tab on">
+    <div class="kpis" id="kpis"></div>
+    <div class="grid2">
+      <div class="card"><h3><i class="fi-rr-chart-histogram"></i>Aktivitas 14 hari <span class="legend"><i class="dy"></i>Render <i class="dk"></i>Upload</span></h3><div id="chart"></div></div>
+      <div class="card"><h3><i class="fi-rr-terminal"></i>Live Log <span class="tools"><button id="btnExport" class="ghost sm"><i class="fi-rr-download"></i> Export</button><button id="btnClearLog" class="ghost sm"><i class="fi-rr-trash"></i> Clear</button></span></h3><pre id="log"></pre></div>
+    </div>
+    <div class="grid2">
+      <div class="card"><h3><i class="fi-rr-calendar"></i><span class="calnav"><button id="calPrev" class="icon-btn"><i class="fi-rr-angle-small-left"></i></button><span id="calTitle"></span><button id="calNext" class="icon-btn"><i class="fi-rr-angle-small-right"></i></button></span></h3><div class="cal" id="cal"></div><small class="muted">Kuning tua = ada upload</small></div>
+      <div class="card"><h3><i class="fi-rr-time-forward"></i>Antrean <small id="qCount"></small></h3><div id="queue"></div></div>
+    </div>
+  </section>
+
+  <section id="planner" class="tab">
+    <div class="card">
+      <h3><i class="fi-rr-list-check"></i>Content Planner <span class="tools"><select id="fStatus"><option value="">Semua status</option></select><button id="btnGen" class="pri sm"><i class="fi-rr-sparkles"></i> Generate 5 Ide</button></span></h3>
+      <div class="scroll"><table><thead><tr><th>ID</th><th>Niche</th><th>Topik</th><th>Hook</th><th>Status</th></tr></thead><tbody id="tbody"></tbody></table></div>
+      <small class="muted">Klik dua kali pada baris untuk membukanya di Video Studio.</small>
+    </div>
+  </section>
+
+  <section id="studio" class="tab">
+    <div class="grid2 studio">
+      <div class="card"><h3><i class="fi-rr-film"></i>Siap Review / Selesai</h3><div id="vlist"></div></div>
+      <div class="card empty" id="empty"><i class="fi-rr-video-camera"></i><b>Pilih video untuk diedit</b><span>Judul, deskripsi, tag, dan audit SEO akan muncul di sini.</span></div>
+      <div class="card" id="editor" hidden>
+        <h3 id="eHead"></h3>
+        <div id="player"></div>
+        <div id="pubLog"></div>
+        <label>Judul <small id="tCount"></small></label><input id="yTitle">
+        <label>Deskripsi</label><textarea id="yDesc" rows="6"></textarea>
+        <label>Tags (pisah koma)</label><input id="yTags">
+        <div class="row">
+          <div><label>Privasi</label><select id="yPriv"></select></div>
+          <div><label>Kategori</label><select id="yCat"></select></div>
+        </div>
+        <div id="schedBox" hidden>
+          <label>Jadwal publikasi <small>(waktu lokal)</small></label>
+          <input type="hidden" id="ySched">
+          <div class="sched">
+            <div class="sched-cal">
+              <div class="sc-nav"><button type="button" id="scPrev" class="icon-btn" title="Bulan sebelumnya"><i class="fi-rr-angle-small-left"></i></button><b id="scTitle"></b><button type="button" id="scNext" class="icon-btn" title="Bulan berikutnya"><i class="fi-rr-angle-small-right"></i></button></div>
+              <div class="sc-grid" id="scGrid"></div>
+            </div>
+            <div class="sched-time">
+              <label>Jam tayang</label>
+              <div class="sc-time"><select id="scH"></select><b>:</b><select id="scM"></select></div>
+              <label>Pilih cepat</label>
+              <div class="sc-quick" id="scQuick"></div>
+              <div class="sc-sum" id="scSum"></div>
+            </div>
+          </div>
+        </div>
+        <label class="chk"><input type="checkbox" id="ySynth" checked> Konten dibuat/diedit AI (synthetic media)</label>
+        <label class="chk"><input type="checkbox" id="yNotify"> Beritahu subscriber</label>
+        <label>Publish ke Platform <small>(TikTok / Instagram / Facebook = simulasi · hubungkan di menu Akun)</small></label>
+        <div id="plats" class="plats"></div>
+        <div id="seo" class="seo"></div>
+        <progress id="prog" max="100" value="0" hidden></progress>
+        <div id="pubItems" class="pub-items"></div>
+        <div class="row">
+          <button id="btnSeo" class="ghost"><i class="fi-rr-magic-wand"></i> Generate SEO</button>
+          <button id="btnVar" class="ghost"><i class="fi-rr-shuffle"></i> Variasi Judul</button>
+          <button id="btnPub" class="pri"><i class="fi-rr-paper-plane"></i> Publish</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="office" class="tab"><div id="oStage"><div id="oCanvas"></div></div></section>
+
+  <section id="analytics" class="tab">
+    <div class="card">
+      <h3><i class="fi-rr-chart-histogram"></i>Metrix — Laporan Performa
+        <span class="tools">
+          <select id="mxReport"></select>
+          <button id="mxRefresh" class="ghost sm"><i class="fi-rr-refresh"></i> Jalankan Metrix</button>
+          <button id="mxExportCsv" class="ghost sm"><i class="fi-rr-file-spreadsheet"></i> Export CSV</button>
+          <button id="mxExportJson" class="ghost sm"><i class="fi-rr-download"></i> Export JSON</button>
+        </span>
+      </h3>
+      <div id="mxEmpty" class="empty"><i class="fi-rr-chart-histogram"></i><b>Belum ada laporan Metrix</b><span>Klik "Jalankan Metrix" untuk menyusun laporan performa pertama.</span></div>
+      <div id="mxBody" hidden>
+        <div class="kpis" id="mxKpis"></div>
+        <div class="grid2">
+          <div class="card">
+            <h3><i class="fi-rr-bulb"></i>Insight Engagement <small id="mxBoostPill"></small></h3>
+            <div id="mxBias"></div>
+          </div>
+          <div class="card">
+            <h3><i class="fi-rr-trophy"></i>Top 10 Video <small>berdasar skor performa</small></h3>
+            <div id="mxTop" class="mx-bars"></div>
+          </div>
+        </div>
+        <div class="card">
+          <h3><i class="fi-rr-table-list"></i>Rincian per Video <small id="mxCount"></small></h3>
+          <div class="scroll"><table>
+            <thead><tr>
+              <th data-k="row_id">Baris</th><th data-k="niche">Niche</th><th data-k="topic">Topik</th>
+              <th data-k="views">Views</th><th data-k="likes">Likes</th><th data-k="comments">Komentar</th>
+              <th data-k="shares">Share</th><th data-k="avg_view_pct">Retensi</th>
+              <th data-k="engagement_rate">Engagement</th><th data-k="score">Skor</th><th>Sumber</th>
+            </tr></thead>
+            <tbody id="mxTbody"></tbody>
+          </table></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="account" class="tab"><div id="accBox"></div></section>
+
+  <section id="settings" class="tab">
+    <div class="card form">
+      <h3><i class="fi-rr-settings-sliders"></i>Automation</h3>
+      <label>Mode Upload</label><select id="sMode"></select>
+      <div class="row"><div><label>Interval (detik, min 5)</label><input id="sInterval" type="number"></div>
+      <div><label>Retry (1–10)</label><input id="sRetries" type="number"></div></div>
+      <label>Log Level</label><select id="sLog"><option>Info</option><option>Debug</option></select>
+      <label>Folder Output</label><input id="sOut">
+      <label>Nama Channel</label><input id="sChannel">
+      <label>Platform Default <small>(target mode Auto &amp; pilihan awal di Video Studio)</small></label><div id="sPlats" class="plats"></div>
+      <label class="chk"><input type="checkbox" id="sNotif"> Notifikasi</label>
+      <label class="chk"><input type="checkbox" id="sAuto"> Autostart automation saat server jalan</label>
+    </div>
+    <div class="card form">
+      <h3><i class="fi-rr-key"></i>API Keys <small>(kosongkan = tidak diubah)</small></h3>
+      <label>GROQ_API_KEY</label><input id="sGroq" type="password" autocomplete="off">
+      <label>PEXELS_API_KEY</label><input id="sPexels" type="password" autocomplete="off">
+      <label>IMAGEMAGICK_PATH</label><input id="sMagick">
+      <div class="row">
+        <button id="btnSave" class="pri"><i class="fi-rr-disk"></i> Simpan Pengaturan</button>
+        <button id="btnCache" class="ghost"><i class="fi-rr-broom"></i> Clear Cache Render</button>
+        <button id="btnReset" class="ghost"><i class="fi-rr-rotate-right"></i> Reset Preferensi</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="notifications" class="tab"><div class="card"><h3><i class="fi-rr-bell"></i>Notifications <span class="tools"><button id="btnNClear" class="ghost sm"><i class="fi-rr-trash"></i> Hapus semua</button></span></h3><div id="nList"></div></div></section>
+
+  <section id="help" class="tab">
+    <div class="card"><h3><i class="fi-rr-route"></i>Alur Kerja</h3><ol>
+      <li>Content Planner → Generate ide baru (status 'Ready') atau isi langsung di Google Sheets.</li>
+      <li>Dashboard → Start Automation. Bot membuat video dan mengubah status menjadi 'Ready for Review'.</li>
+      <li>Video Studio → Generate SEO / Variasi Judul, cek skor &amp; audit SEO, atur kategori/privasi/jadwal, pilih platform tujuan (YouTube, TikTok, Instagram, Facebook), lalu Publish.</li>
+      <li>Setelah upload ke YouTube, status berubah menjadi 'Done' dan link tersimpan di kolom Output. TikTok / Instagram / Facebook masih <b>simulasi</b>: tidak ada data yang dikirim, status baris tidak berubah, hasilnya tercatat di Riwayat publish.</li></ol></div>
+    <div class="card"><h3><i class="fi-rr-keyboard"></i>Shortcut Keyboard <small>(Ctrl / Alt / ⌘)</small></h3><ul>
+      <li><kbd>K</kbd> Fokus pencarian (Enter = buka Planner, Esc = hapus filter)</li>
+      <li><kbd>R</kbd> Refresh data dari Google Sheets</li>
+      <li><kbd>B</kbd> Kecilkan / perluas sidebar</li>
+      <li><kbd>1</kbd>…<kbd>4</kbd> Dashboard / Planner / Video Studio / Akun (gunakan Alt jika browser memakai Ctrl+angka)</li></ul></div>
+    <div class="card"><h3><i class="fi-rr-wrench-simple"></i>Pemecahan Masalah</h3><ul>
+      <li>'Gagal mengambil data Google Sheets' → cek internet, client_secret.json, dan nama sheet.</li>
+      <li>Tombol Publish nonaktif → file video di kolom Output tidak ditemukan atau status bukan 'Ready for Review'.</li>
+      <li>Ubah Log Level ke 'Debug' di Settings untuk melihat traceback lengkap.</li>
+      <li>Generate SEO tidak jalan → pastikan modules/youtube_uploader.py bisa dimuat (lihat Live Log).</li>
+      <li>Login YouTube salah akun → Akun → Switch / Reset Akun YouTube.</li>
+      <li>Platform tampak abu-abu / tidak bisa dipilih di Video Studio → hubungkan dulu di menu Akun.</li>
+      <li>Uji jalur error platform dummy: set env <code>SOCIAL_DUMMY_FAIL=tiktok</code> lalu restart server.</li></ul></div>
+    <div class="card"><h3><i class="fi-rr-folder-open"></i>Pintasan Folder <small>(dibuka di komputer server)</small></h3>
+      <div class="row"><button class="ghost" data-open="project"><i class="fi-rr-folder"></i> Folder Project</button><button class="ghost" data-open="output"><i class="fi-rr-folder-open"></i> Folder Output</button></div></div>
+  </section>
+  <div id="modalConfirm" class="modal-overlay" hidden>
+    <div class="modal-card">
+      <div class="modal-icon"><i class="fi-rr-interrogation"></i></div>
+      <h3>Video Selesai Diproses!</h3>
+      <p>Satu video telah berhasil dirender. Apakah kamu ingin langsung merender antrean berikutnya atau berhenti sejenak?</p>
+      <div class="modal-actions">
+        <button id="btnModalStop" class="ghost">Berhenti</button>
+        <button id="btnModalLanjut" class="pri"><i class="fi-rr-play"></i> Lanjut Gas</button>
+      </div>
+    </div>
+  </div>
+</main>
+<div id="toasts"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="/app.js"></script>
+<script src="/sched.js"></script>
+<script src="/metrix.js"></script>
+<script src="/office_sim.js"></script>
+<script src="/office.js"></script>
+</body>
+</html>
