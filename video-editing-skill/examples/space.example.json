@@ -1,0 +1,17 @@
+{
+  "_comment": "Contoh niche Misteri Alam Semesta (tone reverent). Naskah ~135 kata, target 50-55 detik.",
+  "niche": "semesta",
+  "tone": "reverent",
+  "hook_text": "BINTANG YANG BERNYANYI",
+  "outro_text": "MASIH BERANI LIHAT LANGIT MALAM?",
+  "script": "Di kedalaman 13 miliar tahun cahaya, ada sebuah bintang yang berdenyut seperti jantung. Bukan kedip biasa, tapi getaran yang mengubah bentuknya sendiri setiap detik. Dan yang bikin lo merinding, getaran itu menghasilkan nada yang bisa kita dengar kalau diubah jadi suara. Bintang itu bernama ... sebuah bintang neutron di rasi Cygnus, berjarak 4.200 tahun cahaya dari Bumi. Setiap detik, ia memutar dirinya 716 kali, lebih cepat dari baling-baling pesawat. Tetapi tunggu, bagian paling gila belum lo dengar. Wahana Kepler mencatat bahwa 27 persen massa bintang ini lenyap tanpa jejak, seolah-olah ada yang mengambilnya. Para astronom menyebut ini anomali, bukan kesalahan alat. Jadi, kalau langit malam ternyata punya suara, lo berani dengar sendirian?",
+  "prompts": ["neutron star space", "cygnus constellation", "deep space nebula", "observatory night sky"],
+  "callouts": [
+    {"type": "stat", "text": "13 MILIAR", "sub": "Tahun cahaya", "anchor": "13 miliar"},
+    {"type": "stat", "text": "4.200 TAHUN CAHAYA", "sub": "Jarak dari Bumi", "anchor": "4.200 tahun cahaya"},
+    {"type": "keyword", "text": "716 KALI PER DETIK", "sub": "Rotasi bintang", "anchor": "716 kali", "pose": "wow"},
+    {"type": "percent", "text": "27%", "sub": "Massa yang lenyap", "anchor": "27 persen"},
+    {"type": "question", "text": "BERANI DENGAR SENDIRIAN?", "anchor": "sendirian", "pose": "bertanya"}
+  ],
+  "music_prompt": "slow ambient drone, no percussion, 80 bpm, reverent swell"
+}

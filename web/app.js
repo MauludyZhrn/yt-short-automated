@@ -55,8 +55,21 @@ const loadRows = safe(async (force = false) => {
   loadChart();
 });
 function filtered() {
-  const q = $('#q').value.toLowerCase(), st = $('#fStatus').value;
-  return rows.filter(r => (!st || sk(r) === st) && (!q || (r.topic + r.niche + r.hook).toLowerCase().includes(q)));
+  const q = $('#q').value.toLowerCase(), st = $('#fStatus').value, fp = $('#fPlat').value;
+  return rows.filter(r => (!st || sk(r) === st) && (!fp || platOf(r).includes(fp))
+    && (!q || (r.topic + r.niche + r.hook).toLowerCase().includes(q)));
+}
+
+// ---------- Tempat publish per baris (Content Planner) ----------
+const platOf = r => (Array.isArray(r.platforms) && r.platforms.length ? r.platforms : ['youtube']);
+const platObjs = r => platOf(r).map(id => platforms.find(p => p.id === id)
+  || { id, label: id, icon: 'fi-rr-share', color: '#6B7280', ready: true });
+
+function platCell(r) {
+  const ps = platObjs(r);
+  return `<span class="pchips" data-plat="${esc(r.id)}" title="Klik untuk mengatur tempat publish konten ini">`
+    + ps.map(p => `<i class="${esc(p.icon)} ${p.ready === false ? 'off' : ''}" style="--c:${esc(p.color)}" title="${esc(p.label)}"></i>`).join('')
+    + `<em>+</em></span>`;
 }
 function renderAll() {
   const c = k => rows.filter(r => sk(r) === k).length;
@@ -67,9 +80,10 @@ function renderAll() {
     ['Review', rv, 'eye', 'y'], ['Done', c('done'), 'check-circle', 'g'], ['Failed', c('failed'), 'cross-circle', 'r']];
   $('#kpis').innerHTML = kp.map(([t, n, i, k]) => `<div class="kpi t-${k}"><div class="ico"><i class="fi-rr-${i}"></i></div><div><small>${t}</small><h2>${n}</h2></div></div>`).join('');
   $('#tbody').innerHTML = filtered().sort((a, b) => idn(b) - idn(a)).map(r =>
-    `<tr class="click" data-id="${esc(r.id)}"><td>${esc(r.id)}</td><td>${esc(r.niche)}</td><td>${esc(r.topic)}</td><td>${esc(r.hook)}</td><td>${pill(r)}</td></tr>`).join('')
-    || '<tr><td colspan="5">Tidak ada data.</td></tr>';
+    `<tr class="click" data-id="${esc(r.id)}"><td>${esc(r.id)}</td><td>${esc(r.niche)}</td><td>${esc(r.topic)}</td><td>${esc(r.hook)}</td><td>${platCell(r)}</td><td>${pill(r)}</td></tr>`).join('')
+    || '<tr><td colspan="6">Tidak ada data.</td></tr>';
   $$('#tbody tr.click').forEach(tr => tr.ondblclick = () => openStudio(tr.dataset.id));
+  $$('#tbody [data-plat]').forEach(el => el.onclick = e => { e.stopPropagation(); openPlatModal(el.dataset.plat); });
   renderVideoList();
 }
 const loadChart = safe(async () => {
@@ -82,8 +96,100 @@ const loadChart = safe(async () => {
 $('#btnRefresh').onclick = () => loadRows(true);
 $('#q').oninput = renderAll; $('#fStatus').onchange = renderAll;
 $('#btnGen').onclick = safe(async () => {
-  const r = await api('/planner/generate', { method: 'POST' });
+  // NexaTrend: cek tren tiap platform lalu setorkan ide (tiap ide sudah ditandai tempat publish-nya)
+  const r = await api('/planner/research', { method: 'POST', body: { count: 5 } });
   wasGen = r.status !== 'processing' || wasGen; toast(r.message); pollStatus();
+});
+$('#fPlat').onchange = renderAll;
+
+// ---------- Modal: atur tempat publish per baris Content Planner ----------
+let platEditId = null, platEditSet = new Set();
+const platNames = ids => (ids || []).map(id => (platforms.find(p => p.id === id) || {}).label || id).join(', ');
+
+function openPlatModal(id) {
+  const r = rows.find(x => String(x.id) === String(id));
+  if (!r) return;
+  platEditId = String(id);
+  platEditSet = new Set(platOf(r));
+  $('#mpInfo').textContent = `#${r.id} — ${r.topic || '(tanpa judul)'}`;
+  renderPlatModal();
+  $('#modalPlat').hidden = false;
+}
+
+function renderPlatModal() {
+  $('#mpPlats').innerHTML = platforms.map(p => {
+    const on = platEditSet.has(p.id), off = !p.ready;
+    return `<label class="plat ${on ? 'on' : ''} ${off ? 'off' : ''}" style="--c:${esc(p.color)}" title="${esc(p.message || '')}">
+      <input type="checkbox" value="${esc(p.id)}" ${on ? 'checked' : ''}>
+      <i class="${esc(p.icon)}"></i><span>${esc(p.label)}</span>
+      ${off ? '<em>belum terhubung</em>' : (p.dummy ? '<em>simulasi</em>' : '')}</label>`;
+  }).join('');
+  $$('#mpPlats input').forEach(i => i.onchange = () => {
+    i.checked ? platEditSet.add(i.value) : platEditSet.delete(i.value);
+    i.closest('.plat').classList.toggle('on', i.checked);
+  });
+  $('#mpQuick').innerHTML = `<button type="button" data-q="youtube">Hanya YouTube</button>
+    <button type="button" data-q="youtube,tiktok">YouTube + TikTok</button>
+    <button type="button" data-q="connected">Yang terhubung</button>
+    <button type="button" data-q="all">Semua platform</button>`;
+  $$('#mpQuick button').forEach(b => b.onclick = () => {
+    const q = b.dataset.q;
+    platEditSet = new Set(q === 'all' ? platforms.map(p => p.id)
+      : q === 'connected' ? platforms.filter(p => p.ready).map(p => p.id)
+        : q.split(','));
+    if (!platEditSet.size) platEditSet = new Set(['youtube']);
+    renderPlatModal();
+  });
+}
+
+const savePlatModal = safe(async (applyAll = false) => {
+  const list = platforms.filter(p => platEditSet.has(p.id)).map(p => p.id);
+  if (!list.length) return toast('Pilih minimal satu platform.', 'warn');
+  const label = platNames(list);
+  if (applyAll) {
+    const ids = filtered().map(r => String(r.id));
+    if (!ids.length) return toast('Tidak ada baris yang tampil untuk diubah.', 'warn');
+    const d = await api('/planner/platforms/bulk', { method: 'PUT', body: { ids, platforms: list } });
+    filtered().forEach(r => r.platforms = list);
+    toast(`${d.updated} baris diarahkan ke ${label}`, 'ok');
+  } else {
+    const d = await api('/planner/platforms', { method: 'PUT', body: { id: platEditId, platforms: list } });
+    const r = rows.find(x => String(x.id) === platEditId);
+    if (r) r.platforms = d.platforms;
+    toast(`Baris #${platEditId} → ${label}`, 'ok');
+  }
+  $('#modalPlat').hidden = true;
+  renderAll();
+});
+$('#mpSave').onclick = () => savePlatModal(false);
+$('#mpAll').onclick = () => savePlatModal(true);
+$('#mpCancel').onclick = () => $('#modalPlat').hidden = true;
+
+// ---------- Modal: tren per platform (NexaTrend) ----------
+const openTrendModal = safe(async () => {
+  $('#modalTrend').hidden = false;
+  $('#mtBody').innerHTML = '<div class="mt-empty">Memuat sinyal tren…</div>';
+  const d = await api('/trends');
+  const tags = arr => (arr && arr.length)
+    ? arr.slice(0, 4).map(x => `<span class="mt-tag">${esc(x)}</span>`).join('')
+    : '<small>belum ada data</small>';
+  $('#mtBody').innerHTML = (d.platforms || []).map(p => `
+    <div class="mt-item">
+      <div class="mt-head"><i class="${esc(p.icon)}" style="--c:${esc(p.color)}"></i><b>${esc(p.label)}</b>
+        ${p.ready ? '<span class="pill green">Terhubung</span>' : '<span class="pill gray">Belum terhubung</span>'}</div>
+      <p>${esc(p.brief)}</p>
+      <div class="mt-line"><small>Niche pemenang</small>${tags(p.winning_niches)}</div>
+      <div class="mt-line"><small>Hook pemenang</small>${tags(p.winning_hooks)}</div>
+      <div class="mt-line"><small>Keyword</small>${tags(p.winning_keywords)}</div>
+    </div>`).join('') || '<div class="mt-empty">Tidak ada data tren.</div>';
+});
+$('#btnTrend').onclick = openTrendModal;
+$('#mtClose').onclick = () => $('#modalTrend').hidden = true;
+$('#mtRun').onclick = safe(async () => {
+  const r = await api('/planner/research', { method: 'POST', body: { count: 4 } });
+  wasGen = r.status !== 'processing' || wasGen;
+  $('#modalTrend').hidden = true;
+  toast(r.message); pollStatus();
 });
 
 // ---------- Automation, status & log polling ----------
@@ -148,7 +254,7 @@ function renderVideoList() {
   $$('.vitem').forEach(v => v.onclick = () => openStudio(v.dataset.id));
 }
 function saveDraft() {
-  if (sel) drafts[sel.id] = { t: $('#yTitle').value, d: $('#yDesc').value, g: $('#yTags').value };
+  if (sel) drafts[sel.id] = { t: $('#yTitle').value, d: $('#yDesc').value, g: $('#yTags').value, caps: { ...capOverrides } };
 }
 const openStudio = safe(async id => {
   goTab('studio'); saveDraft();
@@ -160,7 +266,11 @@ const openStudio = safe(async id => {
   $('#player').innerHTML = !sel.exists ? '' : sel.is_url
     ? `<a href="${esc(sel.output)}" target="_blank"><i class="fi-rr-link-alt"></i> Buka di YouTube</a>`
     : `<video controls src="/api/video/file/${encodeURIComponent(sel.id)}"></video>`;
-  renderVideoList(); updateEditorState(); renderPubItems({}); loadPubLog();
+  capOverrides = (drafts[sel.id] && drafts[sel.id].caps) || {}; metaTab = 'youtube';
+  // Video Studio mengikuti target publish milik baris ini (kolom Tempat Publish di Planner)
+  const rowPlats = platOf(sel).filter(id => platforms.some(p => p.id === id && p.ready));
+  if (rowPlats.length) { selPlats = new Set(rowPlats); saveSel(); }
+  renderVideoList(); updateEditorState(); renderPubItems({}); loadPubLog(); renderPlats(); setMetaTab('youtube'); refreshCapPreview();
 });
 const genSeo = safe(async (nextVariant = false, announce = true) => {
   if (!sel) return toast('Pilih video terlebih dahulu.', 'warn');
@@ -180,16 +290,20 @@ function refreshSeo() {
     const r = await api('/seo/analyze', { method: 'POST', body: { title: $('#yTitle').value, description: $('#yDesc').value, tags: tags(), topic: sel?.topic || '' } });
     $('#seo').innerHTML = `<b>Skor SEO: ${r.score}/100</b>` + r.checks.map(([k, t]) => `<div class="${k}"><i class="fi-rr-${k === 'ok' ? 'check-circle' : k === 'warn' ? 'exclamation' : 'cross-circle'}"></i> ${esc(t)}</div>`).join('');
   }), 400);
+  clearTimeout(capTimer); capTimer = setTimeout(refreshCapPreview, 450);
 }
 ['#yTitle', '#yDesc', '#yTags'].forEach(s => $(s).oninput = refreshSeo);
 $('#yPriv').onchange = () => $('#schedBox').hidden = $('#yPriv').value !== 'Jadwalkan';
 $('#btnSeo').onclick = () => genSeo(false); $('#btnVar').onclick = () => genSeo(true);
-// ---------- Platform (YouTube asli · TikTok/Instagram/Facebook simulasi) ----------
+// ---------- Platform & Metadata per-platform (klik platform -> metadata di atas ikut berganti) ----------
 const chosen = () => platforms.filter(p => p.ready && selPlats.has(p.id));
 const saveSel = () => { try { localStorage.setItem('plats', JSON.stringify([...selPlats])); } catch { } };
+let capOverrides = {}, capAuto = {}, metaTab = 'youtube', capTimer = null;
+
 function chipHtml(p, on, off, name) {
   const tag = off ? 'belum terhubung' : p.dummy ? 'simulasi' : '';
-  return `<label class="plat ${on ? 'on' : ''} ${off ? 'off' : ''}" style="--c:${esc(p.color)}" title="${esc(p.message || '')}">
+  const editing = !off && metaTab === p.id ? ' editing' : '';
+  return `<label class="plat ${on ? 'on' : ''} ${off ? 'off' : ''}${editing}" style="--c:${esc(p.color)}" title="${esc(p.message || '')}" data-id="${esc(p.id)}">
     <input type="checkbox" name="${name}" value="${esc(p.id)}" ${on ? 'checked' : ''} ${off ? 'disabled' : ''}>
     <i class="${esc(p.icon)}"></i><span>${esc(p.label)}</span>${tag ? `<em>${tag}</em>` : ''}</label>`;
 }
@@ -198,10 +312,74 @@ function renderPlats() {
   $$('#plats input').forEach(i => i.onchange = () => {
     i.checked ? selPlats.add(i.value) : selPlats.delete(i.value);
     i.closest('.plat').classList.toggle('on', i.checked); saveSel(); updateEditorState();
+    setMetaTab(i.checked ? i.value : (selPlats.has(metaTab) ? metaTab : 'youtube'));
   });
-  updateEditorState();
+  // Klik di badan chip (ikon/label, bukan checkbox) langsung pindah tampilan metadata ke platform itu,
+  // tanpa mengubah pilihan publish — berguna untuk mengintip/menulis caption platform yang belum dicentang.
+  $$('#plats .plat').forEach(lb => lb.addEventListener('click', e => {
+    if (e.target.tagName === 'INPUT' || !lb.dataset.id || lb.classList.contains('off')) return;
+    e.preventDefault(); setMetaTab(lb.dataset.id);
+  }));
+  renderMetaTabs();
 }
-const loadPlatforms = safe(async () => { platforms = (await api('/platforms')).platforms; renderPlats(); });
+
+// metaTab = platform yang metadatanya sedang ditampilkan/diedit di atas (Judul/Deskripsi/Tags utk YouTube,
+// Caption tunggal utk platform lain). Berbeda dari selPlats (centang = target publish).
+function metaPlatforms() { return platforms.filter(p => p.id === 'youtube' || selPlats.has(p.id)); }
+function setMetaTab(pid) {
+  metaTab = platforms.some(p => p.id === pid) ? pid : 'youtube';
+  $('#metaYoutube').hidden = metaTab !== 'youtube';
+  $('#metaSocial').hidden = metaTab === 'youtube';
+  const p = platforms.find(x => x.id === metaTab);
+  $('#metaWho').textContent = p ? p.label : '';
+  renderMetaTabs();
+  if (metaTab !== 'youtube') renderCapBody();
+}
+function renderMetaTabs() {
+  const ps = metaPlatforms();
+  $$('#plats .plat').forEach(lb => lb.classList.toggle('editing', lb.dataset.id === metaTab));
+  $('#metaTabs').innerHTML = ps.map(p => `<button type="button" data-id="${esc(p.id)}" class="${p.id === metaTab ? 'on' : ''}"
+    style="--c:${esc(p.color)}"><i class="${esc(p.icon)}"></i>${esc(p.label)}${capOverrides[p.id] ? ' <span class="dot"></span>' : ''}</button>`).join('');
+  $$('#metaTabs button').forEach(b => { b.classList.toggle('edited', !!capOverrides[b.dataset.id]); b.onclick = () => setMetaTab(b.dataset.id); });
+  if (!$('#metaWho').textContent) { const p = platforms.find(x => x.id === metaTab); $('#metaWho').textContent = p ? p.label : ''; }
+}
+function renderCapBody() {
+  const p = platforms.find(x => x.id === metaTab); if (!p || metaTab === 'youtube') return;
+  const val = capOverrides[metaTab] ?? capAuto[metaTab] ?? '';
+  $('#capText').value = val;
+  $('#capCount').textContent = `untuk ${p.label}`;
+  refreshCapMeta();
+}
+function refreshCapMeta() {
+  const p = platforms.find(x => x.id === metaTab); if (!p) return;
+  const ta = $('#capText'), len = ta.value.length, max = p.caption_max || 2200, over = len > max;
+  $('#capMeta').className = 'pc-meta' + (over ? ' over' : '');
+  $('#capMeta').innerHTML = `<span>${len}/${max} karakter${over ? ' — melebihi batas' : ''}</span>` +
+    (metaTab in capOverrides ? `<button type="button" id="capReset">Pakai otomatis dari YouTube</button>` : `<small>otomatis dari metadata YouTube</small>`);
+  const rb = $('#capReset'); if (rb) rb.onclick = () => { delete capOverrides[metaTab]; renderCapBody(); renderMetaTabs(); };
+}
+$('#capText').oninput = () => {
+  if (metaTab === 'youtube') return;
+  const auto = capAuto[metaTab] ?? '';
+  if ($('#capText').value === auto) delete capOverrides[metaTab]; else capOverrides[metaTab] = $('#capText').value;
+  refreshCapMeta(); renderMetaTabs();
+};
+const refreshCapPreview = safe(async () => {
+  const ps = metaPlatforms().filter(p => p.id !== 'youtube');
+  if (!ps.length) return;
+  const { captions } = await api('/caption/preview', { method: 'POST', body: {
+    title: $('#yTitle').value, description: $('#yDesc').value, tags: tags(), platforms: ps.map(p => p.id) } });
+  capAuto = captions || {};
+  if (metaTab !== 'youtube' && !(metaTab in capOverrides)) renderCapBody();
+});
+const loadPlatforms = safe(async () => {
+  platforms = (await api('/platforms')).platforms;
+  renderPlats();
+  const cur = $('#fPlat').value;      // isi filter platform di Planner (pertahankan pilihan)
+  $('#fPlat').innerHTML = '<option value="">Semua platform</option>'
+    + platforms.map(p => `<option value="${esc(p.id)}">${esc(p.label)}</option>`).join('');
+  $('#fPlat').value = cur;
+});
 function renderPubItems(p) {
   const it = Object.values(p.items || {});
   const show = it.length && sel && String(p.row_id) === String(sel.id);
@@ -237,14 +415,15 @@ $('#btnPub').onclick = safe(async () => {
   if ($('#yPriv').value === 'Jadwalkan') { const bad = window.schedValidate && window.schedValidate(); if (bad) return toast(bad, 'warn'); }
   const body = { id: String(sel.id), title: $('#yTitle').value, description: $('#yDesc').value, tags: tags(),
     privacy: $('#yPriv').value, category: $('#yCat').value, schedule: $('#ySched').value,
-    synthetic: $('#ySynth').checked, notify: $('#yNotify').checked, platforms: ps.map(p => p.id) };
+    synthetic: $('#ySynth').checked, notify: $('#yNotify').checked, platforms: ps.map(p => p.id),
+    captions: Object.fromEntries(ps.filter(p => capOverrides[p.id]).map(p => [p.id, capOverrides[p.id]])) };
   const rep = await api('/seo/analyze', { method: 'POST', body: { ...body, topic: sel.topic } });
   if (rep.errors?.length) return toast('Perbaiki dulu: ' + rep.errors.join('; '), 'err');
   let msg = `Publish ke: ${ps.map(p => p.label + (p.dummy ? ' (simulasi)' : '')).join(', ')}?\n\nJudul: ${body.title}\nPrivasi: ${body.privacy}${body.privacy === 'Jadwalkan' ? ' (' + body.schedule + ')' : ''}\nKategori: ${body.category}\nSkor SEO: ${rep.score}/100`;
   if (rep.warnings?.length) msg += '\n\nSaran:\n• ' + rep.warnings.slice(0, 5).join('\n• ');
   if (!confirm(msg)) return;
   await api('/video/publish', { method: 'POST', body });
-  delete drafts[sel.id]; toast('Upload dimulai di background.'); pollStatus();
+  delete drafts[sel.id]; capOverrides = {}; toast('Upload dimulai di background.'); pollStatus();
 });
 
 // ---------- Akun ----------

@@ -1,0 +1,885 @@
+{
+  "meta": {
+    "niche": "sejarah",
+    "tone": "wry",
+    "fps": 30,
+    "width": 1080,
+    "height": 1920,
+    "voDurationSec": 49.15,
+    "durationSec": 54.68,
+    "hookText": "",
+    "outroText": "",
+    "energyArc": [
+      {
+        "id": "hook",
+        "share": 0.1,
+        "energy": "high"
+      },
+      {
+        "id": "setup",
+        "share": 0.14,
+        "energy": "medium"
+      },
+      {
+        "id": "chain",
+        "share": 0.6,
+        "energy": "medium"
+      },
+      {
+        "id": "closer",
+        "share": 0.16,
+        "energy": "low"
+      }
+    ],
+    "holdTable": {
+      "base": 2.0,
+      "min": 1.2,
+      "max": 3.5
+    },
+    "beats": false
+  },
+  "shots": [
+    {
+      "id": "s1",
+      "start": {
+        "ref": "abs",
+        "offset": 0.0
+      },
+      "startSec": 0.0,
+      "holdSec": 6.25,
+      "voSec": 6.0,
+      "energy": "high",
+      "hero": true,
+      "voWords": [
+        0,
+        4
+      ],
+      "visual": {
+        "type": "bg",
+        "slot": 0,
+        "motion": "kenburns"
+      },
+      "caption": {
+        "style": "karaoke"
+      },
+      "transitionIn": "cut",
+      "transitionSec": 0.0,
+      "status": "built",
+      "segment": "hook"
+    },
+    {
+      "id": "s2",
+      "start": {
+        "ref": "s1",
+        "offset": 0
+      },
+      "startSec": 6.25,
+      "holdSec": 4.04,
+      "voSec": 3.99,
+      "energy": "medium",
+      "hero": false,
+      "voWords": [
+        5,
+        8
+      ],
+      "visual": {
+        "type": "bg",
+        "slot": 1,
+        "motion": "kenburns"
+      },
+      "caption": {
+        "style": "karaoke"
+      },
+      "transitionIn": "dissolve",
+      "transitionSec": 0.7,
+      "status": "built",
+      "segment": "setup"
+    },
+    {
+      "id": "s3",
+      "start": {
+        "ref": "s2",
+        "offset": 0
+      },
+      "startSec": 10.29,
+      "holdSec": 6.25,
+      "voSec": 6.2,
+      "energy": "medium",
+      "hero": false,
+      "voWords": [
+        9,
+        14
+      ],
+      "visual": {
+        "type": "bg",
+        "slot": 2,
+        "motion": "kenburns"
+      },
+      "caption": {
+        "style": "karaoke"
+      },
+      "transitionIn": "cut",
+      "transitionSec": 0.0,
+      "status": "built",
+      "segment": "chain"
+    },
+    {
+      "id": "s3n",
+      "start": {
+        "ref": "s3",
+        "offset": 0
+      },
+      "startSec": 16.54,
+      "holdSec": 1.4,
+      "voSec": 0.0,
+      "energy": "low",
+      "hero": false,
+      "voWords": null,
+      "visual": {
+        "type": "bg",
+        "slot": 3,
+        "motion": "drift"
+      },
+      "caption": {
+        "style": "none"
+      },
+      "transitionIn": "dissolve",
+      "transitionSec": 0.7,
+      "napas": true,
+      "segment": "chain",
+      "status": "built"
+    },
+    {
+      "id": "s4",
+      "start": {
+        "ref": "s3n",
+        "offset": 0
+      },
+      "startSec": 17.94,
+      "holdSec": 5.55,
+      "voSec": 5.5,
+      "energy": "medium",
+      "hero": false,
+      "voWords": [
+        15,
+        19
+      ],
+      "visual": {
+        "type": "bg",
+        "slot": 3,
+        "motion": "kenburns"
+      },
+      "caption": {
+        "style": "karaoke"
+      },
+      "transitionIn": "fade",
+      "transitionSec": 0.5,
+      "status": "built",
+      "segment": "chain"
+    },
+    {
+      "id": "s5",
+      "start": {
+        "ref": "s4",
+        "offset": 0
+      },
+      "startSec": 23.49,
+      "holdSec": 4.94,
+      "voSec": 4.89,
+      "energy": "medium",
+      "hero": false,
+      "voWords": [
+        20,
+        23
+      ],
+      "visual": {
+        "type": "bg",
+        "slot": 0,
+        "motion": "kenburns"
+      },
+      "caption": {
+        "style": "karaoke"
+      },
+      "transitionIn": "cut",
+      "transitionSec": 0.0,
+      "status": "built",
+      "segment": "chain"
+    },
+    {
+      "id": "s5n",
+      "start": {
+        "ref": "s5",
+        "offset": 0
+      },
+      "startSec": 28.43,
+      "holdSec": 1.4,
+      "voSec": 0.0,
+      "energy": "low",
+      "hero": false,
+      "voWords": null,
+      "visual": {
+        "type": "bg",
+        "slot": 1,
+        "motion": "drift"
+      },
+      "caption": {
+        "style": "none"
+      },
+      "transitionIn": "dissolve",
+      "transitionSec": 0.7,
+      "napas": true,
+      "segment": "chain",
+      "status": "built"
+    },
+    {
+      "id": "s6",
+      "start": {
+        "ref": "s5n",
+        "offset": 0
+      },
+      "startSec": 29.83,
+      "holdSec": 4.11,
+      "voSec": 4.06,
+      "energy": "medium",
+      "hero": false,
+      "voWords": [
+        24,
+        26
+      ],
+      "visual": {
+        "type": "bg",
+        "slot": 1,
+        "motion": "kenburns"
+      },
+      "caption": {
+        "style": "karaoke"
+      },
+      "transitionIn": "fade",
+      "transitionSec": 0.5,
+      "status": "built",
+      "segment": "chain"
+    },
+    {
+      "id": "s7",
+      "start": {
+        "ref": "s6",
+        "offset": 0
+      },
+      "startSec": 33.94,
+      "holdSec": 3.09,
+      "voSec": 3.04,
+      "energy": "medium",
+      "hero": false,
+      "voWords": [
+        27,
+        29
+      ],
+      "visual": {
+        "type": "bg",
+        "slot": 2,
+        "motion": "kenburns"
+      },
+      "caption": {
+        "style": "karaoke"
+      },
+      "transitionIn": "cut",
+      "transitionSec": 0.0,
+      "status": "built",
+      "segment": "chain"
+    },
+    {
+      "id": "s7n",
+      "start": {
+        "ref": "s7",
+        "offset": 0
+      },
+      "startSec": 37.03,
+      "holdSec": 1.4,
+      "voSec": 0.0,
+      "energy": "low",
+      "hero": false,
+      "voWords": null,
+      "visual": {
+        "type": "bg",
+        "slot": 3,
+        "motion": "drift"
+      },
+      "caption": {
+        "style": "none"
+      },
+      "transitionIn": "dissolve",
+      "transitionSec": 0.7,
+      "napas": true,
+      "segment": "chain",
+      "status": "built"
+    },
+    {
+      "id": "s8",
+      "start": {
+        "ref": "s7n",
+        "offset": 0
+      },
+      "startSec": 38.43,
+      "holdSec": 3.75,
+      "voSec": 3.7,
+      "energy": "medium",
+      "hero": false,
+      "voWords": [
+        30,
+        32
+      ],
+      "visual": {
+        "type": "bg",
+        "slot": 3,
+        "motion": "kenburns"
+      },
+      "caption": {
+        "style": "karaoke"
+      },
+      "transitionIn": "fade",
+      "transitionSec": 0.5,
+      "status": "built",
+      "segment": "chain"
+    },
+    {
+      "id": "s9",
+      "start": {
+        "ref": "s8",
+        "offset": 0
+      },
+      "startSec": 42.18,
+      "holdSec": 5.14,
+      "voSec": 4.89,
+      "energy": "low",
+      "hero": true,
+      "voWords": [
+        33,
+        35
+      ],
+      "visual": {
+        "type": "bg",
+        "slot": 0,
+        "motion": "kenburns"
+      },
+      "caption": {
+        "style": "karaoke"
+      },
+      "transitionIn": "dissolve",
+      "transitionSec": 0.7,
+      "status": "built",
+      "segment": "closer"
+    },
+    {
+      "id": "s10",
+      "start": {
+        "ref": "s9",
+        "offset": 0
+      },
+      "startSec": 47.32,
+      "holdSec": 3.81,
+      "voSec": 3.56,
+      "energy": "low",
+      "hero": true,
+      "voWords": [
+        36,
+        39
+      ],
+      "visual": {
+        "type": "bg",
+        "slot": 1,
+        "motion": "kenburns"
+      },
+      "caption": {
+        "style": "karaoke"
+      },
+      "transitionIn": "dissolve",
+      "transitionSec": 0.7,
+      "status": "built",
+      "segment": "closer"
+    },
+    {
+      "id": "s11",
+      "start": {
+        "ref": "s10",
+        "offset": 0
+      },
+      "startSec": 51.13,
+      "holdSec": 3.55,
+      "voSec": 3.3,
+      "energy": "low",
+      "hero": true,
+      "voWords": [
+        40,
+        42
+      ],
+      "visual": {
+        "type": "bg",
+        "slot": 2,
+        "motion": "kenburns"
+      },
+      "caption": {
+        "style": "karaoke"
+      },
+      "transitionIn": "dissolve",
+      "transitionSec": 0.7,
+      "status": "built",
+      "segment": "closer"
+    }
+  ],
+  "captions": [
+    {
+      "text": "Pada 1521,",
+      "start": 0.0,
+      "end": 1.283,
+      "words": [
+        0,
+        0
+      ]
+    },
+    {
+      "text": "penjelajah Portugis menemukan peta",
+      "start": 0.883,
+      "end": 3.153,
+      "words": [
+        0,
+        1
+      ]
+    },
+    {
+      "text": "kota kuno yang menandai",
+      "start": 3.003,
+      "end": 4.081,
+      "words": [
+        2,
+        3
+      ]
+    },
+    {
+      "text": "bintang sebagai kompas laut,",
+      "start": 3.931,
+      "end": 5.788,
+      "words": [
+        3,
+        4
+      ]
+    },
+    {
+      "text": "sebuah alat navigasi rahasia",
+      "start": 5.388,
+      "end": 6.996,
+      "words": [
+        4,
+        5
+      ]
+    },
+    {
+      "text": "yang mengaburkan batas antara",
+      "start": 6.846,
+      "end": 8.199,
+      "words": [
+        6,
+        7
+      ]
+    },
+    {
+      "text": "langit dan samudra.",
+      "start": 8.049,
+      "end": 9.615,
+      "words": [
+        7,
+        8
+      ]
+    },
+    {
+      "text": "Dan yang bikin lo",
+      "start": 9.215,
+      "end": 10.445,
+      "words": [
+        8,
+        9
+      ]
+    },
+    {
+      "text": "merinding,",
+      "start": 10.295,
+      "end": 11.347,
+      "words": [
+        9,
+        9
+      ]
+    },
+    {
+      "text": "peta itu menampilkan bintang",
+      "start": 10.947,
+      "end": 12.179,
+      "words": [
+        10,
+        11
+      ]
+    },
+    {
+      "text": "yang bergerak sesuai posisi",
+      "start": 12.029,
+      "end": 13.597,
+      "words": [
+        11,
+        12
+      ]
+    },
+    {
+      "text": "kapal,",
+      "start": 13.447,
+      "end": 14.311,
+      "words": [
+        12,
+        12
+      ]
+    },
+    {
+      "text": "seolah‑olah bintang itu menuntun",
+      "start": 13.911,
+      "end": 15.56,
+      "words": [
+        13,
+        14
+      ]
+    },
+    {
+      "text": "arah.",
+      "start": 15.41,
+      "end": 16.159,
+      "words": [
+        14,
+        14
+      ]
+    },
+    {
+      "text": "Kota itu,",
+      "start": 15.759,
+      "end": 16.804,
+      "words": [
+        14,
+        15
+      ]
+    },
+    {
+      "text": "di wilayah yang kini",
+      "start": 16.404,
+      "end": 17.721,
+      "words": [
+        15,
+        16
+      ]
+    },
+    {
+      "text": "dikenal sebagai Portugal,",
+      "start": 17.571,
+      "end": 19.334,
+      "words": [
+        16,
+        17
+      ]
+    },
+    {
+      "text": "dipenuhi pelaut yang percaya",
+      "start": 18.934,
+      "end": 20.45,
+      "words": [
+        17,
+        18
+      ]
+    },
+    {
+      "text": "pada sistem ini.",
+      "start": 20.3,
+      "end": 21.937,
+      "words": [
+        19,
+        19
+      ]
+    },
+    {
+      "text": "Pada tahun 1522,",
+      "start": 21.537,
+      "end": 23.989,
+      "words": [
+        20,
+        20
+      ]
+    },
+    {
+      "text": "seorang pelaut bernama Duarte",
+      "start": 23.589,
+      "end": 24.91,
+      "words": [
+        21,
+        22
+      ]
+    },
+    {
+      "text": "mencatat bahwa bintang tersebut",
+      "start": 24.76,
+      "end": 26.266,
+      "words": [
+        22,
+        23
+      ]
+    },
+    {
+      "text": "berubah posisi setiap 24",
+      "start": 26.116,
+      "end": 27.881,
+      "words": [
+        23,
+        24
+      ]
+    },
+    {
+      "text": "jam,",
+      "start": 27.731,
+      "end": 28.404,
+      "words": [
+        25,
+        25
+      ]
+    },
+    {
+      "text": "memberi petunjuk arah tanpa",
+      "start": 28.004,
+      "end": 30.005,
+      "words": [
+        25,
+        26
+      ]
+    },
+    {
+      "text": "kompas.",
+      "start": 29.855,
+      "end": 30.896,
+      "words": [
+        26,
+        26
+      ]
+    },
+    {
+      "text": "Tetapi tunggu,",
+      "start": 30.496,
+      "end": 31.873,
+      "words": [
+        27,
+        27
+      ]
+    },
+    {
+      "text": "bagian paling gila belum",
+      "start": 31.473,
+      "end": 32.682,
+      "words": [
+        27,
+        28
+      ]
+    },
+    {
+      "text": "lo dengar.",
+      "start": 32.532,
+      "end": 33.63,
+      "words": [
+        29,
+        29
+      ]
+    },
+    {
+      "text": "Pada 1524,",
+      "start": 33.23,
+      "end": 34.803,
+      "words": [
+        29,
+        30
+      ]
+    },
+    {
+      "text": "peta itu hilang begitu",
+      "start": 34.403,
+      "end": 36.396,
+      "words": [
+        30,
+        31
+      ]
+    },
+    {
+      "text": "saja setelah badai besar",
+      "start": 36.246,
+      "end": 37.391,
+      "words": [
+        31,
+        32
+      ]
+    },
+    {
+      "text": "menghancurkan pelabuhan,",
+      "start": 37.241,
+      "end": 38.954,
+      "words": [
+        33,
+        33
+      ]
+    },
+    {
+      "text": "meninggalkan jejak misteri yang",
+      "start": 38.554,
+      "end": 40.222,
+      "words": [
+        33,
+        34
+      ]
+    },
+    {
+      "text": "belum terpecahkan.",
+      "start": 40.072,
+      "end": 42.065,
+      "words": [
+        35,
+        35
+      ]
+    },
+    {
+      "text": "Jadi,",
+      "start": 41.665,
+      "end": 42.533,
+      "words": [
+        35,
+        35
+      ]
+    },
+    {
+      "text": "lo pernah nggak ngerasa",
+      "start": 42.133,
+      "end": 43.07,
+      "words": [
+        36,
+        37
+      ]
+    },
+    {
+      "text": "kalau bintang itu lebih",
+      "start": 42.92,
+      "end": 43.934,
+      "words": [
+        37,
+        38
+      ]
+    },
+    {
+      "text": "dari sekadar cahaya?",
+      "start": 43.784,
+      "end": 45.579,
+      "words": [
+        38,
+        39
+      ]
+    },
+    {
+      "text": "Apakah bintang itu benar-benar",
+      "start": 45.179,
+      "end": 46.839,
+      "words": [
+        39,
+        40
+      ]
+    },
+    {
+      "text": "menuntun pelaut,",
+      "start": 46.689,
+      "end": 48.156,
+      "words": [
+        41,
+        41
+      ]
+    },
+    {
+      "text": "atau sekadar ilusi?",
+      "start": 47.756,
+      "end": 49.398,
+      "words": [
+        41,
+        42
+      ]
+    }
+  ],
+  "callouts": [
+    {
+      "type": "keyword",
+      "text": "NAVIGASI RAHASIA",
+      "sub": "bukan sekadar peta",
+      "start": 6.07,
+      "end": 8.47,
+      "verb": "pop",
+      "pose": "berfikir"
+    },
+    {
+      "type": "keyword",
+      "text": "BINTANG PENUNTUN",
+      "sub": "mengikuti kapal",
+      "start": 14.85,
+      "end": 17.25,
+      "verb": "pop",
+      "pose": "wow"
+    },
+    {
+      "type": "year",
+      "text": "1522",
+      "sub": "dicatat Duarte",
+      "start": 22.86,
+      "end": 25.66,
+      "verb": "slam",
+      "pose": "utama"
+    },
+    {
+      "type": "stat",
+      "text": "24 JAM",
+      "sub": "bintang bergeser",
+      "start": 27.53,
+      "end": 30.53,
+      "verb": "countup",
+      "pose": "berfikir"
+    },
+    {
+      "type": "timeline",
+      "text": "JEJAK PETA",
+      "sub": "",
+      "start": 33.54,
+      "end": 37.94,
+      "verb": "draw",
+      "items": [
+        {
+          "year": "1521",
+          "label": "Peta ditemukan"
+        },
+        {
+          "year": "1522",
+          "label": "Dicatat Duarte"
+        },
+        {
+          "year": "1524",
+          "label": "Hilang setelah badai"
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "text": "LEBIH DARI SEKADAR CAHAYA?",
+      "sub": "",
+      "start": 43.55,
+      "end": 46.15,
+      "verb": "wave"
+    },
+    {
+      "type": "question",
+      "text": "PELAUT, ATAU SEKADAR ILUSI?",
+      "sub": "",
+      "start": 47.25,
+      "end": 49.85,
+      "verb": "wave"
+    }
+  ]
+}

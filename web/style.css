@@ -130,3 +130,55 @@ th[data-k]{user-select:none}th[data-k]:hover{color:var(--t)}
 .sc-quick{display:flex;flex-wrap:wrap;gap:6px}
 .sc-sum{margin-top:14px;padding:10px 12px;border-radius:12px;background:var(--g1);font-size:12.5px;color:var(--tm);line-height:1.45}.sc-sum b{display:block;color:var(--t)}.sc-sum small{color:var(--tm)}
 .sc-sum.ok{background:var(--emb);color:var(--emd)}.sc-sum.ok b,.sc-sum.ok small{color:var(--emd)}.sc-sum.bad{background:var(--rob);color:var(--rod)}
+
+
+
+/* Metadata per-platform (Video Studio) */
+.meta-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-top:14px}
+.meta-head b{font-weight:600;font-size:.92em;opacity:.85}
+.meta-tabs{display:flex;gap:6px;flex-wrap:wrap}
+.meta-tabs button{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:8px;
+  border:1px solid var(--bd,#2a2f3a);background:transparent;cursor:pointer;font-size:.82em;color:inherit;opacity:.65}
+.meta-tabs button.on{opacity:1;border-color:var(--c,#888);background:color-mix(in srgb, var(--c,#888) 16%, transparent)}
+.meta-tabs button i{color:var(--c,#888)}
+.meta-tabs button .dot{width:6px;height:6px;border-radius:50%;background:#0F9D58;display:none}
+.meta-tabs button.edited .dot{display:inline-block}
+#metaSocial textarea{width:100%;min-height:150px;resize:vertical}
+.pc-meta{display:flex;justify-content:space-between;align-items:center;margin-top:4px;font-size:.8em;opacity:.7}
+.pc-meta.over{color:#D93025;opacity:1}
+.pc-meta button{background:none;border:0;color:inherit;text-decoration:underline;cursor:pointer;opacity:.85;font-size:1em}
+.plat.editing{box-shadow:0 0 0 2px var(--c,#888) inset}
+
+
+/* Analytics multi-platform: badge mode dev/error & ikon platform di tabel */
+.mx-badge{display:inline-block;padding:1px 6px;border-radius:6px;font-size:.72em;font-weight:600;margin-left:6px;vertical-align:middle}
+.mx-badge.dev{background:rgba(245,166,35,.18);color:#F5A623}
+.mx-badge.error{background:rgba(217,48,37,.18);color:#D93025}
+.mx-plat-cell{display:inline-flex;align-items:center;gap:6px}
+.mx-plat-cell i{color:var(--c,#888)}
+#mxPlatFilter button em{font-style:normal;margin-left:4px;opacity:.75;font-size:.85em}
+
+/* Tempat publish per baris (Content Planner) */
+.pchips{display:inline-flex;align-items:center;gap:6px;cursor:pointer;padding:3px 7px;border-radius:999px;
+  border:1px dashed var(--g2);background:#fff;transition:border .15s,background .15s}
+.pchips:hover{border-color:var(--y);background:var(--yf)}
+.pchips i{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--c,#6B7280);color:#fff;font-size:11px}
+.pchips i.off{opacity:.45;filter:grayscale(1)}
+.pchips em{font:700 12px/1 system-ui;font-style:normal;color:var(--tf);padding:0 2px}
+/* modal lebar: atur platform & tren per platform */
+.modal-card.wide{max-width:580px;text-align:left}
+.modal-card.wide h3{justify-content:flex-start;margin-bottom:12px}
+.modal-card.wide p{margin:0 0 14px}
+.mp-quick{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.mp-quick button{background:var(--g1);border-color:var(--g2);color:var(--tm);padding:5px 12px;font-size:12px}
+.mp-quick button:hover{background:var(--yf);color:var(--t)}
+.mt-body{max-height:52vh;overflow:auto;display:grid;gap:12px;padding-right:4px}
+.mt-empty{padding:24px;text-align:center;color:var(--tm);font-size:13px}
+.mt-item{border:1px solid var(--bd);border-radius:14px;padding:14px}
+.mt-head{display:flex;align-items:center;gap:9px;margin-bottom:6px}
+.mt-head i{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--c,#6B7280);color:#fff;font-size:13px}
+.mt-head b{font-size:14px}.mt-head .pill{margin-left:auto}
+.mt-item p{margin:0 0 10px;font-size:12.5px;color:var(--tm);line-height:1.55}
+.mt-line{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:6px;font-size:12.5px}
+.mt-line small{color:var(--tf);font-weight:600;min-width:108px}
+.mt-tag{background:var(--g1);border-radius:999px;padding:2px 9px;font-size:11.5px}

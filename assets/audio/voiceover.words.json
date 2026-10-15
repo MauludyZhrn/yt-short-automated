@@ -1,7 +1,7 @@
 {
  "method": "pro-per-sentence",
  "voice": "id-ID-ArdiNeural",
- "duration": 49.53,
+ "duration": 50.36,
  "sentences": [
   {
    "i": 0,
@@ -9,7 +9,7 @@
    "pitch": "+4Hz",
    "volume": "+6%",
    "pause_after": 0.44,
-   "text": "Pada 1790, pasukan berbaju besi menabrak kota Romawi di Sungai Narmada, menembus tembok seakan terbuat dari air."
+   "text": "Pada 2034, teleskop Hubble menangkap semburat cahaya aneh di Kuiper Belt, seolah‑olah energi raksasa menutupi matahari."
   },
   {
    "i": 1,
@@ -17,15 +17,15 @@
    "pitch": "+2Hz",
    "volume": "+0%",
    "pause_after": 0.3,
-   "text": "Dan yang bikin lo merinding, mereka mengungkap rahasia perang tiga hari yang terlupakan."
+   "text": "Dan yang bikin lo merinding, cahaya itu ternyata menyembunyikan lebih banyak misteri daripada yang terlihat."
   },
   {
    "i": 2,
-   "rate": "+2%",
+   "rate": "+5%",
    "pitch": "-2Hz",
    "volume": "+0%",
    "pause_after": 0.3,
-   "text": "Sungai Narmada, 6.000 kilometer panjangnya, menjadi medan pertempuran pada 1790, ketika pasukan Persia dan India bersatu menaklukkan Romawi."
+   "text": "Kuiper Belt, daerah luar planet Neptunus, berisi ratusan ribu es dan batu."
   },
   {
    "i": 3,
@@ -33,7 +33,7 @@
    "pitch": "+2Hz",
    "volume": "+0%",
    "pause_after": 0.3,
-   "text": "Pasukan berbaju besi, dengan helm berlapis besi, menembus pertahanan kota dalam waktu 72 jam, menewaskan 12.000 tentara Romawi dan menghancurkan benteng utama."
+   "text": "Pada 2034, spektrum cahaya menunjukkan suhu 30 kelvin, tetapi energi yang dipancarkan seakan 10 kali lebih besar dari yang diharapkan."
   },
   {
    "i": 4,
@@ -41,7 +41,7 @@
    "pitch": "-2Hz",
    "volume": "+0%",
    "pause_after": 0.3,
-   "text": "Tapi tunggu, bagian paling gila belum lo dengar."
+   "text": "Para ilmuwan memeriksa teori gelombang gravitasi, namun data menunjukkan gelombang gelap—fenomena yang menutup sinar dengan cara yang belum pernah dilihat."
   },
   {
    "i": 5,
@@ -49,610 +49,683 @@
    "pitch": "+2Hz",
    "volume": "+0%",
    "pause_after": 0.3,
-   "text": "Ternyata, pasukan tersebut memakai senjata api yang terbuat dari batu bara, yang belum diketahui sampai kini."
+   "text": "Tapi tunggu, bagian paling gila belum lo dengar."
   },
   {
    "i": 6,
-   "rate": "+3%",
-   "pitch": "+8Hz",
+   "rate": "+2%",
+   "pitch": "-2Hz",
    "volume": "+0%",
-   "pause_after": 0.5,
-   "text": "Jadi, apakah pertempuran ini memicu revolusi teknologi di Asia? Lo penasaran?"
+   "pause_after": 0.3,
+   "text": "Penelitian terbaru mengungkap bahwa energi itu berasal dari partikel eksotik yang berputar 1.000.000 rpm, mengaburkan cahaya biasa."
   },
   {
    "i": 7,
+   "rate": "+3%",
+   "pitch": "+12Hz",
+   "volume": "+0%",
+   "pause_after": 0.5,
+   "text": "Jadi, apakah lo siap menyelami gelombang gelap ini?"
+  },
+  {
+   "i": 8,
    "rate": "+0%",
-   "pitch": "-2Hz",
+   "pitch": "-6Hz",
    "volume": "+0%",
    "pause_after": 0.0,
-   "text": "Jadi, kembali ke fakta gila: pasukan berbaju besi menembus tembok seperti air."
+   "text": "Kalau iya, beri komentar dan tonton ulang bagian pertama untuk memaknai misteri ini."
   }
  ],
  "words": [
   {
    "word": "Pada",
    "start": 0.0,
-   "end": 0.105
+   "end": 0.132
   },
   {
-   "word": "1790,",
-   "start": 0.105,
-   "end": 1.656
+   "word": "2034,",
+   "start": 0.132,
+   "end": 1.417
   },
   {
-   "word": "pasukan",
-   "start": 1.656,
-   "end": 2.027
+   "word": "teleskop",
+   "start": 1.417,
+   "end": 1.799
   },
   {
-   "word": "berbaju",
-   "start": 2.027,
-   "end": 2.374
+   "word": "Hubble",
+   "start": 1.799,
+   "end": 2.065
   },
   {
-   "word": "besi",
-   "start": 2.374,
-   "end": 2.582
+   "word": "menangkap",
+   "start": 2.065,
+   "end": 2.412
   },
   {
-   "word": "menabrak",
-   "start": 2.582,
-   "end": 2.906
+   "word": "semburat",
+   "start": 2.412,
+   "end": 2.702
   },
   {
-   "word": "kota",
-   "start": 2.906,
-   "end": 3.08
+   "word": "cahaya",
+   "start": 2.702,
+   "end": 2.98
   },
   {
-   "word": "Romawi",
-   "start": 3.08,
-   "end": 3.427
+   "word": "aneh",
+   "start": 2.98,
+   "end": 3.234
   },
   {
    "word": "di",
-   "start": 3.427,
-   "end": 3.508
+   "start": 3.234,
+   "end": 3.327
   },
   {
-   "word": "Sungai",
-   "start": 3.508,
-   "end": 3.74
+   "word": "Kuiper",
+   "start": 3.327,
+   "end": 3.593
   },
   {
-   "word": "Narmada,",
-   "start": 3.74,
-   "end": 4.596
+   "word": "Belt,",
+   "start": 3.593,
+   "end": 4.183
   },
   {
-   "word": "menembus",
-   "start": 4.596,
-   "end": 4.943
+   "word": "seolah‑olah",
+   "start": 4.183,
+   "end": 4.658
   },
   {
-   "word": "tembok",
-   "start": 4.943,
-   "end": 5.244
+   "word": "energi",
+   "start": 4.658,
+   "end": 4.97
   },
   {
-   "word": "seakan",
-   "start": 5.244,
-   "end": 5.51
+   "word": "raksasa",
+   "start": 4.97,
+   "end": 5.399
   },
   {
-   "word": "terbuat",
-   "start": 5.51,
-   "end": 5.846
+   "word": "menutupi",
+   "start": 5.399,
+   "end": 5.78
   },
   {
-   "word": "dari",
-   "start": 5.846,
-   "end": 6.02
-  },
-  {
-   "word": "air.",
-   "start": 6.02,
-   "end": 6.471
+   "word": "matahari.",
+   "start": 5.78,
+   "end": 6.382
   },
   {
    "word": "Dan",
-   "start": 6.938,
-   "end": 7.086
+   "start": 6.847,
+   "end": 6.995
   },
   {
    "word": "yang",
-   "start": 7.086,
-   "end": 7.205
+   "start": 6.995,
+   "end": 7.114
   },
   {
    "word": "bikin",
-   "start": 7.205,
-   "end": 7.431
+   "start": 7.114,
+   "end": 7.316
   },
   {
    "word": "lo",
-   "start": 7.431,
-   "end": 7.514
+   "start": 7.316,
+   "end": 7.396
   },
   {
    "word": "merinding,",
-   "start": 7.514,
-   "end": 8.347
+   "start": 7.396,
+   "end": 8.233
   },
   {
-   "word": "mereka",
-   "start": 8.347,
-   "end": 8.645
+   "word": "cahaya",
+   "start": 8.233,
+   "end": 8.518
   },
   {
-   "word": "mengungkap",
-   "start": 8.645,
-   "end": 8.99
+   "word": "itu",
+   "start": 8.518,
+   "end": 8.709
   },
   {
-   "word": "rahasia",
-   "start": 8.99,
-   "end": 9.359
+   "word": "ternyata",
+   "start": 8.709,
+   "end": 9.078
   },
   {
-   "word": "perang",
-   "start": 9.359,
-   "end": 9.574
+   "word": "menyembunyikan",
+   "start": 9.078,
+   "end": 9.637
   },
   {
-   "word": "tiga",
-   "start": 9.574,
-   "end": 9.776
+   "word": "lebih",
+   "start": 9.637,
+   "end": 9.816
   },
   {
-   "word": "hari",
-   "start": 9.776,
-   "end": 10.002
+   "word": "banyak",
+   "start": 9.816,
+   "end": 10.066
   },
   {
-   "word": "yang",
-   "start": 10.002,
-   "end": 10.109
+   "word": "misteri",
+   "start": 10.066,
+   "end": 10.411
   },
   {
-   "word": "terlupakan.",
-   "start": 10.109,
-   "end": 11.139
-  },
-  {
-   "word": "Sungai",
-   "start": 11.139,
-   "end": 11.406
-  },
-  {
-   "word": "Narmada,",
-   "start": 11.406,
-   "end": 12.362
-  },
-  {
-   "word": "6.000",
-   "start": 12.362,
-   "end": 12.828
-  },
-  {
-   "word": "kilometer",
-   "start": 12.828,
-   "end": 13.208
-  },
-  {
-   "word": "panjangnya,",
-   "start": 13.208,
-   "end": 14.151
-  },
-  {
-   "word": "menjadi",
-   "start": 14.151,
-   "end": 14.495
-  },
-  {
-   "word": "medan",
-   "start": 14.495,
-   "end": 14.727
-  },
-  {
-   "word": "pertempuran",
-   "start": 14.727,
-   "end": 15.205
-  },
-  {
-   "word": "pada",
-   "start": 15.205,
-   "end": 15.401
-  },
-  {
-   "word": "1790,",
-   "start": 15.401,
-   "end": 17.093
-  },
-  {
-   "word": "ketika",
-   "start": 17.093,
-   "end": 17.362
-  },
-  {
-   "word": "pasukan",
-   "start": 17.362,
-   "end": 17.742
-  },
-  {
-   "word": "Persia",
-   "start": 17.742,
-   "end": 18.146
-  },
-  {
-   "word": "dan",
-   "start": 18.146,
-   "end": 18.306
-  },
-  {
-   "word": "India",
-   "start": 18.306,
-   "end": 18.649
-  },
-  {
-   "word": "bersatu",
-   "start": 18.649,
-   "end": 19.053
-  },
-  {
-   "word": "menaklukkan",
-   "start": 19.053,
-   "end": 19.556
-  },
-  {
-   "word": "Romawi.",
-   "start": 19.556,
-   "end": 20.42
-  },
-  {
-   "word": "Pasukan",
-   "start": 20.42,
-   "end": 20.755
-  },
-  {
-   "word": "berbaju",
-   "start": 20.755,
-   "end": 21.086
-  },
-  {
-   "word": "besi,",
-   "start": 21.086,
-   "end": 21.809
-  },
-  {
-   "word": "dengan",
-   "start": 21.809,
-   "end": 22.078
-  },
-  {
-   "word": "helm",
-   "start": 22.078,
-   "end": 22.299
-  },
-  {
-   "word": "berlapis",
-   "start": 22.299,
-   "end": 22.654
-  },
-  {
-   "word": "besi,",
-   "start": 22.654,
-   "end": 23.377
-  },
-  {
-   "word": "menembus",
-   "start": 23.377,
-   "end": 23.733
-  },
-  {
-   "word": "pertahanan",
-   "start": 23.733,
-   "end": 24.125
-  },
-  {
-   "word": "kota",
-   "start": 24.125,
-   "end": 24.419
-  },
-  {
-   "word": "dalam",
-   "start": 24.419,
-   "end": 24.664
-  },
-  {
-   "word": "waktu",
-   "start": 24.664,
-   "end": 24.921
-  },
-  {
-   "word": "72",
-   "start": 24.921,
-   "end": 25.522
-  },
-  {
-   "word": "jam,",
-   "start": 25.522,
-   "end": 26.208
-  },
-  {
-   "word": "menewaskan",
-   "start": 26.208,
-   "end": 26.711
-  },
-  {
-   "word": "12.000",
-   "start": 26.711,
-   "end": 27.311
-  },
-  {
-   "word": "tentara",
-   "start": 27.311,
-   "end": 27.617
-  },
-  {
-   "word": "Romawi",
-   "start": 27.617,
-   "end": 28.059
-  },
-  {
-   "word": "dan",
-   "start": 28.059,
-   "end": 28.23
-  },
-  {
-   "word": "menghancurkan",
-   "start": 28.23,
-   "end": 28.818
-  },
-  {
-   "word": "benteng",
-   "start": 28.818,
-   "end": 29.125
-  },
-  {
-   "word": "utama.",
-   "start": 29.125,
-   "end": 30.015
-  },
-  {
-   "word": "Tapi",
-   "start": 30.015,
-   "end": 30.17
-  },
-  {
-   "word": "tunggu,",
-   "start": 30.17,
-   "end": 30.967
-  },
-  {
-   "word": "bagian",
-   "start": 30.967,
-   "end": 31.36
-  },
-  {
-   "word": "paling",
-   "start": 31.36,
-   "end": 31.551
-  },
-  {
-   "word": "gila",
-   "start": 31.551,
-   "end": 31.753
-  },
-  {
-   "word": "belum",
-   "start": 31.753,
-   "end": 31.967
-  },
-  {
-   "word": "lo",
-   "start": 31.967,
-   "end": 32.075
-  },
-  {
-   "word": "dengar.",
-   "start": 32.075,
-   "end": 32.837
-  },
-  {
-   "word": "Ternyata,",
-   "start": 32.837,
-   "end": 33.75
-  },
-  {
-   "word": "pasukan",
-   "start": 33.75,
-   "end": 34.095
-  },
-  {
-   "word": "tersebut",
-   "start": 34.095,
-   "end": 34.453
-  },
-  {
-   "word": "memakai",
-   "start": 34.453,
-   "end": 34.75
-  },
-  {
-   "word": "senjata",
-   "start": 34.75,
-   "end": 35.084
-  },
-  {
-   "word": "api",
-   "start": 35.084,
-   "end": 35.31
+   "word": "daripada",
+   "start": 10.411,
+   "end": 10.804
   },
   {
    "word": "yang",
-   "start": 35.31,
-   "end": 35.417
+   "start": 10.804,
+   "end": 10.935
   },
   {
-   "word": "terbuat",
-   "start": 35.417,
-   "end": 35.75
+   "word": "terlihat.",
+   "start": 10.935,
+   "end": 11.755
+  },
+  {
+   "word": "Kuiper",
+   "start": 11.755,
+   "end": 11.984
+  },
+  {
+   "word": "Belt,",
+   "start": 11.984,
+   "end": 12.603
+  },
+  {
+   "word": "daerah",
+   "start": 12.603,
+   "end": 12.948
+  },
+  {
+   "word": "luar",
+   "start": 12.948,
+   "end": 13.138
+  },
+  {
+   "word": "planet",
+   "start": 13.138,
+   "end": 13.4
+  },
+  {
+   "word": "Neptunus,",
+   "start": 13.4,
+   "end": 14.21
+  },
+  {
+   "word": "berisi",
+   "start": 14.21,
+   "end": 14.519
+  },
+  {
+   "word": "ratusan",
+   "start": 14.519,
+   "end": 14.9
+  },
+  {
+   "word": "ribu",
+   "start": 14.9,
+   "end": 15.138
+  },
+  {
+   "word": "es",
+   "start": 15.138,
+   "end": 15.388
+  },
+  {
+   "word": "dan",
+   "start": 15.388,
+   "end": 15.567
+  },
+  {
+   "word": "batu.",
+   "start": 15.567,
+   "end": 16.375
+  },
+  {
+   "word": "Pada",
+   "start": 16.375,
+   "end": 16.548
+  },
+  {
+   "word": "2034,",
+   "start": 16.548,
+   "end": 17.909
+  },
+  {
+   "word": "spektrum",
+   "start": 17.909,
+   "end": 18.325
+  },
+  {
+   "word": "cahaya",
+   "start": 18.325,
+   "end": 18.656
+  },
+  {
+   "word": "menunjukkan",
+   "start": 18.656,
+   "end": 19.097
+  },
+  {
+   "word": "suhu",
+   "start": 19.097,
+   "end": 19.367
+  },
+  {
+   "word": "30",
+   "start": 19.367,
+   "end": 19.759
+  },
+  {
+   "word": "kelvin,",
+   "start": 19.759,
+   "end": 20.543
+  },
+  {
+   "word": "tetapi",
+   "start": 20.543,
+   "end": 20.837
+  },
+  {
+   "word": "energi",
+   "start": 20.837,
+   "end": 21.181
+  },
+  {
+   "word": "yang",
+   "start": 21.181,
+   "end": 21.279
+  },
+  {
+   "word": "dipancarkan",
+   "start": 21.279,
+   "end": 21.842
+  },
+  {
+   "word": "seakan",
+   "start": 21.842,
+   "end": 22.149
+  },
+  {
+   "word": "10",
+   "start": 22.149,
+   "end": 22.443
+  },
+  {
+   "word": "kali",
+   "start": 22.443,
+   "end": 22.651
+  },
+  {
+   "word": "lebih",
+   "start": 22.651,
+   "end": 22.835
+  },
+  {
+   "word": "besar",
+   "start": 22.835,
+   "end": 23.154
   },
   {
    "word": "dari",
-   "start": 35.75,
-   "end": 35.905
-  },
-  {
-   "word": "batu",
-   "start": 35.905,
-   "end": 36.119
-  },
-  {
-   "word": "bara,",
-   "start": 36.119,
-   "end": 36.834
+   "start": 23.154,
+   "end": 23.386
   },
   {
    "word": "yang",
-   "start": 36.834,
-   "end": 37.024
+   "start": 23.386,
+   "end": 23.497
+  },
+  {
+   "word": "diharapkan.",
+   "start": 23.497,
+   "end": 24.518
+  },
+  {
+   "word": "Para",
+   "start": 24.518,
+   "end": 24.63
+  },
+  {
+   "word": "ilmuwan",
+   "start": 24.63,
+   "end": 24.987
+  },
+  {
+   "word": "memeriksa",
+   "start": 24.987,
+   "end": 25.344
+  },
+  {
+   "word": "teori",
+   "start": 25.344,
+   "end": 25.606
+  },
+  {
+   "word": "gelombang",
+   "start": 25.606,
+   "end": 25.939
+  },
+  {
+   "word": "gravitasi,",
+   "start": 25.939,
+   "end": 26.951
+  },
+  {
+   "word": "namun",
+   "start": 26.951,
+   "end": 27.225
+  },
+  {
+   "word": "data",
+   "start": 27.225,
+   "end": 27.439
+  },
+  {
+   "word": "menunjukkan",
+   "start": 27.439,
+   "end": 27.903
+  },
+  {
+   "word": "gelombang",
+   "start": 27.903,
+   "end": 28.225
+  },
+  {
+   "word": "gelap—fenomena",
+   "start": 28.225,
+   "end": 28.891
+  },
+  {
+   "word": "fenomena",
+   "start": 28.891,
+   "end": 29.38
+  },
+  {
+   "word": "yang",
+   "start": 29.38,
+   "end": 29.511
+  },
+  {
+   "word": "menutup",
+   "start": 29.511,
+   "end": 29.784
+  },
+  {
+   "word": "sinar",
+   "start": 29.784,
+   "end": 30.118
+  },
+  {
+   "word": "dengan",
+   "start": 30.118,
+   "end": 30.356
+  },
+  {
+   "word": "cara",
+   "start": 30.356,
+   "end": 30.606
+  },
+  {
+   "word": "yang",
+   "start": 30.606,
+   "end": 30.772
   },
   {
    "word": "belum",
-   "start": 37.024,
-   "end": 37.203
+   "start": 30.772,
+   "end": 30.963
   },
   {
-   "word": "diketahui",
-   "start": 37.203,
-   "end": 37.679
+   "word": "pernah",
+   "start": 30.963,
+   "end": 31.201
   },
   {
-   "word": "sampai",
-   "start": 37.679,
-   "end": 38.0
+   "word": "dilihat.",
+   "start": 31.201,
+   "end": 31.981
   },
   {
-   "word": "kini.",
-   "start": 38.0,
-   "end": 38.732
+   "word": "Tapi",
+   "start": 31.981,
+   "end": 32.136
+  },
+  {
+   "word": "tunggu,",
+   "start": 32.136,
+   "end": 32.934
+  },
+  {
+   "word": "bagian",
+   "start": 32.934,
+   "end": 33.326
+  },
+  {
+   "word": "paling",
+   "start": 33.326,
+   "end": 33.517
+  },
+  {
+   "word": "gila",
+   "start": 33.517,
+   "end": 33.719
+  },
+  {
+   "word": "belum",
+   "start": 33.719,
+   "end": 33.934
+  },
+  {
+   "word": "lo",
+   "start": 33.934,
+   "end": 34.041
+  },
+  {
+   "word": "dengar.",
+   "start": 34.041,
+   "end": 34.807
+  },
+  {
+   "word": "Penelitian",
+   "start": 34.807,
+   "end": 35.191
+  },
+  {
+   "word": "terbaru",
+   "start": 35.191,
+   "end": 35.473
+  },
+  {
+   "word": "mengungkap",
+   "start": 35.473,
+   "end": 35.889
+  },
+  {
+   "word": "bahwa",
+   "start": 35.889,
+   "end": 36.122
+  },
+  {
+   "word": "energi",
+   "start": 36.122,
+   "end": 36.416
+  },
+  {
+   "word": "itu",
+   "start": 36.416,
+   "end": 36.661
+  },
+  {
+   "word": "berasal",
+   "start": 36.661,
+   "end": 36.992
+  },
+  {
+   "word": "dari",
+   "start": 36.992,
+   "end": 37.127
+  },
+  {
+   "word": "partikel",
+   "start": 37.127,
+   "end": 37.519
+  },
+  {
+   "word": "eksotik",
+   "start": 37.519,
+   "end": 37.973
+  },
+  {
+   "word": "yang",
+   "start": 37.973,
+   "end": 38.095
+  },
+  {
+   "word": "berputar",
+   "start": 38.095,
+   "end": 38.463
+  },
+  {
+   "word": "1.000.000",
+   "start": 38.463,
+   "end": 39.97
+  },
+  {
+   "word": "rpm,",
+   "start": 39.97,
+   "end": 40.889
+  },
+  {
+   "word": "mengaburkan",
+   "start": 40.889,
+   "end": 41.404
+  },
+  {
+   "word": "cahaya",
+   "start": 41.404,
+   "end": 41.723
+  },
+  {
+   "word": "biasa.",
+   "start": 41.723,
+   "end": 42.634
   },
   {
    "word": "Jadi,",
-   "start": 38.732,
-   "end": 39.55
+   "start": 42.634,
+   "end": 43.426
   },
   {
    "word": "apakah",
-   "start": 39.55,
-   "end": 39.89
+   "start": 43.426,
+   "end": 43.79
   },
   {
-   "word": "pertempuran",
-   "start": 39.89,
-   "end": 40.29
+   "word": "lo",
+   "start": 43.79,
+   "end": 43.888
   },
   {
-   "word": "ini",
-   "start": 40.29,
-   "end": 40.521
+   "word": "siap",
+   "start": 43.888,
+   "end": 44.13
   },
   {
-   "word": "memicu",
-   "start": 40.521,
-   "end": 40.836
+   "word": "menyelami",
+   "start": 44.13,
+   "end": 44.482
   },
   {
-   "word": "revolusi",
-   "start": 40.836,
-   "end": 41.237
+   "word": "gelombang",
+   "start": 44.482,
+   "end": 44.81
   },
   {
-   "word": "teknologi",
-   "start": 41.237,
-   "end": 41.71
+   "word": "gelap",
+   "start": 44.81,
+   "end": 44.992
   },
   {
-   "word": "di",
-   "start": 41.71,
-   "end": 41.795
+   "word": "ini?",
+   "start": 44.992,
+   "end": 45.392
   },
   {
-   "word": "Asia?",
-   "start": 41.795,
-   "end": 42.305
+   "word": "Kalau",
+   "start": 45.912,
+   "end": 46.077
   },
   {
-   "word": "Lo",
-   "start": 43.117,
-   "end": 43.335
+   "word": "iya,",
+   "start": 46.077,
+   "end": 46.802
   },
   {
-   "word": "penasaran?",
-   "start": 43.335,
-   "end": 44.015
+   "word": "beri",
+   "start": 46.802,
+   "end": 46.977
   },
   {
-   "word": "Jadi,",
-   "start": 44.55,
-   "end": 45.365
+   "word": "komentar",
+   "start": 46.977,
+   "end": 47.427
   },
   {
-   "word": "kembali",
-   "start": 45.365,
-   "end": 45.715
+   "word": "dan",
+   "start": 47.427,
+   "end": 47.615
   },
   {
-   "word": "ke",
-   "start": 45.715,
-   "end": 45.795
+   "word": "tonton",
+   "start": 47.615,
+   "end": 47.915
   },
   {
-   "word": "fakta",
-   "start": 45.795,
-   "end": 46.078
+   "word": "ulang",
+   "start": 47.915,
+   "end": 48.127
   },
   {
-   "word": "gila:",
-   "start": 46.078,
-   "end": 46.853
+   "word": "bagian",
+   "start": 48.127,
+   "end": 48.427
   },
   {
-   "word": "pasukan",
-   "start": 46.853,
-   "end": 47.253
+   "word": "pertama",
+   "start": 48.427,
+   "end": 48.827
   },
   {
-   "word": "berbaju",
-   "start": 47.253,
-   "end": 47.653
+   "word": "untuk",
+   "start": 48.827,
+   "end": 49.065
   },
   {
-   "word": "besi",
-   "start": 47.653,
-   "end": 47.865
+   "word": "memaknai",
+   "start": 49.065,
+   "end": 49.477
   },
   {
-   "word": "menembus",
-   "start": 47.865,
-   "end": 48.215
+   "word": "misteri",
+   "start": 49.477,
+   "end": 49.802
   },
   {
-   "word": "tembok",
-   "start": 48.215,
-   "end": 48.553
-  },
-  {
-   "word": "seperti",
-   "start": 48.553,
-   "end": 48.878
-  },
-  {
-   "word": "air.",
-   "start": 48.878,
-   "end": 49.365
+   "word": "ini.",
+   "start": 49.802,
+   "end": 50.215
   }
  ]
 }

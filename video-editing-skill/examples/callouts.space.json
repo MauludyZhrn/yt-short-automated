@@ -1,0 +1,49 @@
+[
+  {
+    "type": "keyword",
+    "text": "BERDENYUT SEPERTI JANTUNG",
+    "sub": "bukan kedip biasa",
+    "anchor": "seperti jantung",
+    "pose": "wow"
+  },
+  {
+    "type": "keyword",
+    "text": "NADA DARI GETARAN",
+    "sub": "bisa kita dengar",
+    "anchor": "menghasilkan nada",
+    "pose": "berfikir"
+  },
+  {
+    "type": "keyword",
+    "text": "BINTANG NEUTRON",
+    "sub": "rasi Cygnus",
+    "anchor": "bintang neutron"
+  },
+  {
+    "type": "stat",
+    "text": "4.200 TAHUN CAHAYA",
+    "sub": "jarak dari Bumi",
+    "anchor": "4.200 tahun cahaya",
+    "pose": "utama"
+  },
+  {
+    "type": "stat",
+    "text": "716 KALI PER DETIK",
+    "sub": "rotasinya sendiri",
+    "anchor": "716 kali",
+    "pose": "wow"
+  },
+  {
+    "type": "percent",
+    "text": "27%",
+    "sub": "massa yang lenyap tanpa jejak",
+    "anchor": "27 persen",
+    "pose": "terkejut"
+  },
+  {
+    "type": "question",
+    "text": "LANGIT PUNYA SUARA?",
+    "anchor": "langit malam",
+    "pose": "bertanya"
+  }
+]

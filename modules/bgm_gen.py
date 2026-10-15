@@ -7,6 +7,7 @@ def get_local_bgm(niche):
     Folder target:
     - assets/bgm/fakta_sejarah
     - assets/bgm/misteri_alam_semesta
+    - assets/bgm/random
     """
     niche_lower = str(niche).lower()
     
@@ -17,7 +18,7 @@ def get_local_bgm(niche):
         sub_folder = "misteri_alam_semesta"
     else:
         # Default fallback
-        sub_folder = "misteri_alam_semesta"
+        sub_folder = "random"
 
     bgm_dir = os.path.abspath(os.path.join("assets", "bgm", sub_folder))
     

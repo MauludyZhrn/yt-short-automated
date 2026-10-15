@@ -54,9 +54,15 @@
 
   <section id="planner" class="tab">
     <div class="card">
-      <h3><i class="fi-rr-list-check"></i>Content Planner <span class="tools"><select id="fStatus"><option value="">Semua status</option></select><button id="btnGen" class="pri sm"><i class="fi-rr-sparkles"></i> Generate 5 Ide</button></span></h3>
-      <div class="scroll"><table><thead><tr><th>ID</th><th>Niche</th><th>Topik</th><th>Hook</th><th>Status</th></tr></thead><tbody id="tbody"></tbody></table></div>
-      <small class="muted">Klik dua kali pada baris untuk membukanya di Video Studio.</small>
+      <h3><i class="fi-rr-list-check"></i>Content Planner <span class="tools">
+        <select id="fStatus"><option value="">Semua status</option></select>
+        <select id="fPlat"><option value="">Semua platform</option></select>
+        <button id="btnTrend" class="ghost sm"><i class="fi-rr-signal-alt"></i> Tren per Platform</button>
+        <button id="btnGen" class="pri sm"><i class="fi-rr-sparkles"></i> Riset Tren 5 Ide</button>
+      </span></h3>
+      <div class="scroll"><table><thead><tr><th>ID</th><th>Niche</th><th>Topik</th><th>Hook</th><th>Tempat Publish</th><th>Status</th></tr></thead><tbody id="tbody"></tbody></table></div>
+      <small class="muted">Klik ikon platform pada suatu baris untuk mengatur tempat publish konten itu.
+        Klik dua kali baris untuk membukanya di Video Studio.</small>
     </div>
   </section>
 
@@ -68,12 +74,25 @@
         <h3 id="eHead"></h3>
         <div id="player"></div>
         <div id="pubLog"></div>
-        <label>Judul <small id="tCount"></small></label><input id="yTitle">
-        <label>Deskripsi</label><textarea id="yDesc" rows="6"></textarea>
-        <label>Tags (pisah koma)</label><input id="yTags">
+        <label>Publish ke Platform <small>(klik untuk pilih tujuan — metadata di bawah otomatis mengikuti platform yang sedang aktif)</small></label>
+        <div id="plats" class="plats"></div>
+        <div class="meta-head">
+          <b>Metadata: <span id="metaWho"></span></b>
+          <div id="metaTabs" class="meta-tabs"></div>
+        </div>
+        <div id="metaYoutube">
+          <label>Judul <small id="tCount"></small></label><input id="yTitle">
+          <label>Deskripsi</label><textarea id="yDesc" rows="6"></textarea>
+          <label>Tags (pisah koma)</label><input id="yTags">
+        </div>
+        <div id="metaSocial" hidden>
+          <label>Caption <small id="capCount"></small></label>
+          <textarea id="capText" rows="8" placeholder="Memuat pratinjau otomatis dari metadata YouTube…"></textarea>
+          <div class="pc-meta" id="capMeta"></div>
+        </div>
         <div class="row">
-          <div><label>Privasi</label><select id="yPriv"></select></div>
-          <div><label>Kategori</label><select id="yCat"></select></div>
+          <div><label>Privasi <small>(berlaku untuk semua platform terpilih)</small></label><select id="yPriv"></select></div>
+          <div><label>Kategori <small>(khusus YouTube)</small></label><select id="yCat"></select></div>
         </div>
         <div id="schedBox" hidden>
           <label>Jadwal publikasi <small>(waktu lokal)</small></label>
@@ -94,8 +113,6 @@
         </div>
         <label class="chk"><input type="checkbox" id="ySynth" checked> Konten dibuat/diedit AI (synthetic media)</label>
         <label class="chk"><input type="checkbox" id="yNotify"> Beritahu subscriber</label>
-        <label>Publish ke Platform <small>(TikTok / Instagram / Facebook = simulasi · hubungkan di menu Akun)</small></label>
-        <div id="plats" class="plats"></div>
         <div id="seo" class="seo"></div>
         <progress id="prog" max="100" value="0" hidden></progress>
         <div id="pubItems" class="pub-items"></div>
@@ -123,6 +140,7 @@
       <div id="mxEmpty" class="empty"><i class="fi-rr-chart-histogram"></i><b>Belum ada laporan Metrix</b><span>Klik "Jalankan Metrix" untuk menyusun laporan performa pertama.</span></div>
       <div id="mxBody" hidden>
         <div class="kpis" id="mxKpis"></div>
+        <div id="mxPlatFilter" class="meta-tabs" style="margin:4px 0 14px"></div>
         <div class="grid2">
           <div class="card">
             <h3><i class="fi-rr-bulb"></i>Insight Engagement <small id="mxBoostPill"></small></h3>
@@ -137,7 +155,7 @@
           <h3><i class="fi-rr-table-list"></i>Rincian per Video <small id="mxCount"></small></h3>
           <div class="scroll"><table>
             <thead><tr>
-              <th data-k="row_id">Baris</th><th data-k="niche">Niche</th><th data-k="topic">Topik</th>
+              <th data-k="platform">Platform</th><th data-k="row_id">Baris</th><th data-k="niche">Niche</th><th data-k="topic">Topik</th>
               <th data-k="views">Views</th><th data-k="likes">Likes</th><th data-k="comments">Komentar</th>
               <th data-k="shares">Share</th><th data-k="avg_view_pct">Retensi</th>
               <th data-k="engagement_rate">Engagement</th><th data-k="score">Skor</th><th>Sumber</th>
@@ -181,7 +199,7 @@
 
   <section id="help" class="tab">
     <div class="card"><h3><i class="fi-rr-route"></i>Alur Kerja</h3><ol>
-      <li>Content Planner → Generate ide baru (status 'Ready') atau isi langsung di Google Sheets.</li>
+      <li>Content Planner → Generate ide baru (status 'Ready') atau isi langsung di Google Sheets. NexaTrend mengecek tren <b>per platform</b>: tiap ide langsung ditandai tempat publish-nya (kolom Tempat Publish). Klik ikon platform di baris mana pun untuk mengubah targetnya.</li>
       <li>Dashboard → Start Automation. Bot membuat video dan mengubah status menjadi 'Ready for Review'.</li>
       <li>Video Studio → Generate SEO / Variasi Judul, cek skor &amp; audit SEO, atur kategori/privasi/jadwal, pilih platform tujuan (YouTube, TikTok, Instagram, Facebook), lalu Publish.</li>
       <li>Setelah upload ke YouTube, status berubah menjadi 'Done' dan link tersimpan di kolom Output. TikTok / Instagram / Facebook masih <b>simulasi</b>: tidak ada data yang dikirim, status baris tidak berubah, hasilnya tercatat di Riwayat publish.</li></ol></div>
@@ -201,6 +219,31 @@
     <div class="card"><h3><i class="fi-rr-folder-open"></i>Pintasan Folder <small>(dibuka di komputer server)</small></h3>
       <div class="row"><button class="ghost" data-open="project"><i class="fi-rr-folder"></i> Folder Project</button><button class="ghost" data-open="output"><i class="fi-rr-folder-open"></i> Folder Output</button></div></div>
   </section>
+  <div id="modalPlat" class="modal-overlay" hidden>
+    <div class="modal-card wide">
+      <h3><i class="fi-rr-share"></i> Tempat Publish Konten</h3>
+      <p id="mpInfo"></p>
+      <div id="mpPlats" class="plats"></div>
+      <div class="mp-quick" id="mpQuick"></div>
+      <div class="modal-actions">
+        <button id="mpCancel" class="ghost">Batal</button>
+        <button id="mpAll" class="ghost">Terapkan ke semua</button>
+        <button id="mpSave" class="pri"><i class="fi-rr-disk"></i> Simpan</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="modalTrend" class="modal-overlay" hidden>
+    <div class="modal-card wide">
+      <h3><i class="fi-rr-signal-alt"></i> Tren per Platform <small>NexaTrend</small></h3>
+      <div id="mtBody" class="mt-body"></div>
+      <div class="modal-actions">
+        <button id="mtClose" class="ghost">Tutup</button>
+        <button id="mtRun" class="pri"><i class="fi-rr-sparkles"></i> Riset Sekarang</button>
+      </div>
+    </div>
+  </div>
+
   <div id="modalConfirm" class="modal-overlay" hidden>
     <div class="modal-card">
       <div class="modal-icon"><i class="fi-rr-interrogation"></i></div>

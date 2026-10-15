@@ -26,6 +26,9 @@ import secrets
 import threading
 import time
 import urllib.parse
+import base64
+import hashlib
+import secrets
 
 import requests
 
@@ -119,6 +122,21 @@ def _tokens(pid):
         return _load(TOKENS_FILE, {}).get(pid) or {}
 
 
+def get_tokens(pid):
+    """Akses publik token tersimpan (dipakai modules/social_analytics.py). Tidak memvalidasi/refresh."""
+    return _tokens(pid)
+
+
+def graph_base():
+    """URL dasar Graph API publik (dipakai modules/social_analytics.py)."""
+    return _graph()
+
+
+def tiktok_access_token():
+    """Access token TikTok yang valid, auto-refresh bila perlu. Raise bila belum terhubung/kedaluwarsa."""
+    return _tiktok_access()
+
+
 def _store(pid, username, tokens):
     with _lock:
         acc = _load(ACCOUNTS_FILE, {})
@@ -191,6 +209,17 @@ def _to_epoch(publish_at):
     return int(dt.timestamp())
 
 
+# ------------------------------------------------------------------ PKCE Helper
+def _generate_pkce():
+    """Generate PKCE verifier persis 43 karakter (standar aman TikTok)."""
+    # token_urlsafe(32) menghasilkan tepat 43 karakter (tanpa tanda sama dengan)
+    verifier = secrets.token_urlsafe(32)
+    # TikTok BEDA dari PKCE standar: challenge = SHA256(verifier) dalam HEX, bukan base64url.
+    # (base64url -> "Code verifier or code challenge is invalid")
+    challenge = hashlib.sha256(verifier.encode("ascii")).hexdigest()
+    return verifier, challenge
+
+
 # ------------------------------------------------------------------ OAuth
 def auth_url(pid):
     """URL login OAuth untuk platform pid (tiktok / instagram / facebook)."""
@@ -201,19 +230,49 @@ def auth_url(pid):
         raise ValueError("Kredensial belum diisi di .env: " + ", ".join(miss))
     state = secrets.token_urlsafe(24)
     now = time.time()
+
     for k in [k for k, v in _states.items() if now - v["ts"] > 900]:
         _states.pop(k, None)
-    _states[state] = {"pid": pid, "ts": now}
 
     if pid == "tiktok":
-        q = {"client_key": _env("TIKTOK_CLIENT_KEY"),
-             "scope": _env("TIKTOK_SCOPES", "user.info.basic,video.publish,video.upload"),
-             "response_type": "code", "redirect_uri": redirect_uri("tiktok"), "state": state}
-        return "https://www.tiktok.com/v2/auth/authorize/?" + urllib.parse.urlencode(q)
+        verifier, challenge = _generate_pkce()
+        # Simpan code_verifier ke dalam state memori
+        _states[state] = {"pid": pid, "ts": now, "code_verifier": verifier}
 
-    q = {"client_id": _env("META_APP_ID"), "redirect_uri": redirect_uri("meta"), "state": state,
-         "response_type": "code",
-         "scope": "pages_show_list,pages_read_engagement,pages_manage_posts,instagram_basic,instagram_content_publish"}
+        q = {
+            "client_key": _env("TIKTOK_CLIENT_KEY"),
+            "scope": _env(
+                "TIKTOK_SCOPES", "user.info.basic,video.publish,video.upload"
+            ),
+            "response_type": "code",
+            "redirect_uri": redirect_uri("tiktok"),
+            "state": state,
+            "code_challenge": challenge,
+            "code_challenge_method": "S256",
+        }
+        return (
+            "https://www.tiktok.com/v2/auth/authorize/?"
+            + urllib.parse.urlencode(q)
+        )
+
+    _states[state] = {"pid": pid, "ts": now}
+    q = {
+        "client_id": _env("META_APP_ID"),
+        "redirect_uri": redirect_uri("meta"),
+        "state": state,
+        "response_type": "code",
+    }
+    cfg = _env("META_CONFIG_ID")
+    if cfg:
+        # App bertipe "Facebook Login for Business": izin ditentukan oleh Configuration, scope diabaikan.
+        q["config_id"] = cfg
+        q["override_default_response_type"] = "true"
+    else:
+        q["scope"] = _env(
+            "META_SCOPES",
+            "pages_show_list,pages_read_engagement,pages_manage_posts,instagram_basic,instagram_content_publish",
+        )
+        q["auth_type"] = "rerequest"
     return f"https://www.facebook.com/{_gv()}/dialog/oauth?" + urllib.parse.urlencode(q)
 
 
@@ -221,10 +280,16 @@ def handle_callback(provider, code, state):
     """Tukar code -> token, simpan akun. Return list pid yang berhasil terhubung."""
     st = _states.pop(state, None)
     if not st or time.time() - st["ts"] > 900:
-        raise RuntimeError("State OAuth tidak valid / kedaluwarsa. Ulangi dari tombol Hubungkan.")
+        raise RuntimeError(
+            "State OAuth tidak valid / kedaluwarsa. Ulangi dari tombol Hubungkan."
+        )
     if PROVIDER.get(st["pid"]) != provider:
         raise RuntimeError("State OAuth tidak cocok dengan provider.")
-    return _tiktok_callback(code) if provider == "tiktok" else _meta_callback(code)
+
+    if provider == "tiktok":
+        code_verifier = st.get("code_verifier", "")
+        return _tiktok_callback(code, code_verifier)
+    return _meta_callback(code)
 
 
 def _tiktok_token_request(payload):
@@ -242,18 +307,28 @@ def _tiktok_pack(d, old=None):
             "scope": d.get("scope", "")}
 
 
-def _tiktok_callback(code):
+def _tiktok_callback(code, code_verifier):
     d = _tiktok_token_request({
-        "client_key": _env("TIKTOK_CLIENT_KEY"), "client_secret": _env("TIKTOK_CLIENT_SECRET"),
-        "code": urllib.parse.unquote(code), "grant_type": "authorization_code",
-        "redirect_uri": redirect_uri("tiktok")})
+        "client_key": _env("TIKTOK_CLIENT_KEY"),
+        "client_secret": _env("TIKTOK_CLIENT_SECRET"),
+        "code": code.strip(),  # Pastikan tidak ada spasi tersembunyi
+        "grant_type": "authorization_code",
+        "redirect_uri": redirect_uri("tiktok"),
+        "code_verifier": code_verifier,
+    })
     tokens = _tiktok_pack(d)
     name = "akun TikTok"
     try:
-        r = requests.get("https://open.tiktokapis.com/v2/user/info/", timeout=TIMEOUT,
-                         params={"fields": "open_id,display_name"},
-                         headers={"Authorization": f"Bearer {tokens['access_token']}"})
-        name = _tt_check(r, "TikTok user info")["data"]["user"].get("display_name") or name
+        r = requests.get(
+            "https://open.tiktokapis.com/v2/user/info/",
+            timeout=TIMEOUT,
+            params={"fields": "open_id,display_name"},
+            headers={"Authorization": f"Bearer {tokens['access_token']}"},
+        )
+        name = (
+            _tt_check(r, "TikTok user info")["data"]["user"].get("display_name")
+            or name
+        )
     except Exception as exc:
         print(f"⚠️ TikTok: nama akun tidak terbaca ({exc})")
     _store("tiktok", name, tokens)
@@ -277,6 +352,41 @@ def _tiktok_access():
     return new["access_token"]
 
 
+def _meta_granted(g, token):
+    """Daftar izin berstatus 'granted' untuk token ini (untuk diagnosis)."""
+    try:
+        r = requests.get(f"{g}/me/permissions", timeout=TIMEOUT, params={"access_token": token})
+        return [p["permission"] for p in _meta_check(r, "Meta izin").get("data", []) if p.get("status") == "granted"]
+    except Exception as exc:
+        print(f"⚠️ Meta: gagal membaca izin ({exc})")
+        return []
+
+
+def _meta_pages_via_business(g, token, fields):
+    """Fallback: Page milik/klien Business Portfolio (butuh izin business_management)."""
+    out, seen = [], set()
+    try:
+        biz = _meta_check(requests.get(f"{g}/me/businesses", timeout=TIMEOUT, params={
+            "fields": "id,name", "limit": 50, "access_token": token}), "Meta businesses").get("data", [])
+    except Exception as exc:
+        print(f"ℹ️ Meta: Business Portfolio tidak terbaca ({exc})")
+        return out
+    for b in biz:
+        for edge in ("owned_pages", "client_pages"):
+            try:
+                rows = _meta_check(requests.get(f"{g}/{b['id']}/{edge}", timeout=TIMEOUT, params={
+                    "fields": fields, "limit": 100, "access_token": token}), f"Meta {edge}").get("data", [])
+            except Exception as exc:
+                print(f"ℹ️ Meta: {edge} untuk bisnis {b.get('name')} gagal ({exc})")
+                continue
+            for p in rows:
+                if p.get("access_token") and p["id"] not in seen:
+                    seen.add(p["id"]); out.append(p)
+    if out:
+        print(f"ℹ️ Meta: {len(out)} Page ditemukan lewat Business Portfolio.")
+    return out
+
+
 def _meta_callback(code):
     g, app_id, secret = _graph(), _env("META_APP_ID"), _env("META_APP_SECRET")
     r = requests.get(f"{g}/oauth/access_token", timeout=TIMEOUT, params={
@@ -287,12 +397,25 @@ def _meta_callback(code):
         "fb_exchange_token": short})
     long_user = _meta_check(r, "Meta long-lived token")["access_token"]
 
+    granted = _meta_granted(g, long_user)
+    print(f"ℹ️ Meta: izin yang diberikan = {', '.join(granted) or '(tidak ada)'}")
+
+    fields = "id,name,access_token,instagram_business_account{id,username}"
     r = requests.get(f"{g}/me/accounts", timeout=TIMEOUT, params={
-        "fields": "id,name,access_token,instagram_business_account{id,username}",
-        "limit": 100, "access_token": long_user})
+        "fields": fields, "limit": 100, "access_token": long_user})
     pages = _meta_check(r, "Meta daftar Page").get("data", [])
     if not pages:
-        raise RuntimeError("Tidak ada Facebook Page di akun ini. Buat/kelola Page dulu, lalu ulangi.")
+        pages = _meta_pages_via_business(g, long_user, fields)   # Page di Business Portfolio
+    if not pages:
+        if "pages_show_list" not in granted:
+            raise RuntimeError(
+                "Izin pages_show_list TIDAK diberikan ke app. Jika app bertipe 'Facebook Login for Business', "
+                "buat Configuration di dashboard Meta lalu isi META_CONFIG_ID di .env. Jika tidak, hapus app di "
+                "facebook.com/settings/?tab=business_tools lalu login ulang dan setujui semua izin.")
+        raise RuntimeError(
+            "Izin sudah ada tetapi tidak ada Page yang dibagikan. Hapus 'Automated Bot' di "
+            "facebook.com/settings/?tab=business_tools, login ulang, lalu CENTANG Page-mu di langkah pilih Page. "
+            "Jika Page dikelola lewat Business Portfolio, tambahkan business_management ke META_SCOPES di .env.")
     want = _env("META_PAGE_ID")
     page = next((p for p in pages if p["id"] == want), None) if want else None
     page = page or next((p for p in pages if p.get("instagram_business_account")), pages[0])

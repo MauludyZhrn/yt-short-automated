@@ -1,0 +1,76 @@
+[
+  {
+    "type": "keyword",
+    "text": "NAVIGASI RAHASIA",
+    "sub": "bukan sekadar peta",
+    "start": 6.07,
+    "end": 8.47,
+    "verb": "pop",
+    "pose": "berfikir"
+  },
+  {
+    "type": "keyword",
+    "text": "BINTANG PENUNTUN",
+    "sub": "mengikuti kapal",
+    "start": 14.85,
+    "end": 17.25,
+    "verb": "pop",
+    "pose": "wow"
+  },
+  {
+    "type": "year",
+    "text": "1522",
+    "sub": "dicatat Duarte",
+    "start": 22.86,
+    "end": 25.66,
+    "verb": "slam",
+    "pose": "utama"
+  },
+  {
+    "type": "stat",
+    "text": "24 JAM",
+    "sub": "bintang bergeser",
+    "start": 27.53,
+    "end": 30.53,
+    "verb": "countup",
+    "pose": "berfikir"
+  },
+  {
+    "type": "timeline",
+    "text": "JEJAK PETA",
+    "sub": "",
+    "start": 33.54,
+    "end": 37.94,
+    "verb": "draw",
+    "items": [
+      {
+        "year": "1521",
+        "label": "Peta ditemukan"
+      },
+      {
+        "year": "1522",
+        "label": "Dicatat Duarte"
+      },
+      {
+        "year": "1524",
+        "label": "Hilang setelah badai"
+      }
+    ]
+  },
+  {
+    "type": "question",
+    "text": "LEBIH DARI SEKADAR CAHAYA?",
+    "sub": "",
+    "start": 43.55,
+    "end": 46.15,
+    "verb": "wave"
+  },
+  {
+    "type": "question",
+    "text": "PELAUT, ATAU SEKADAR ILUSI?",
+    "sub": "",
+    "start": 47.25,
+    "end": 49.85,
+    "verb": "wave"
+  }
+]

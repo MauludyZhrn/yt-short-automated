@@ -1,0 +1,56 @@
+[
+  {
+    "type": "keyword",
+    "text": "NAVIGASI RAHASIA",
+    "sub": "bukan sekadar peta",
+    "anchor": "navigasi",
+    "pose": "berfikir"
+  },
+  {
+    "type": "keyword",
+    "text": "BINTANG PENUNTUN",
+    "sub": "mengikuti kapal",
+    "anchor": "menuntun arah",
+    "pose": "wow"
+  },
+  {
+    "type": "year",
+    "text": "1522",
+    "sub": "dicatat Duarte",
+    "anchor": "1522",
+    "pose": "utama"
+  },
+  {
+    "type": "stat",
+    "text": "24 JAM",
+    "sub": "bintang bergeser",
+    "anchor": "24 jam",
+    "pose": "berfikir"
+  },
+  {
+    "type": "compare",
+    "text": "ARAH",
+    "sub": "derajat yang bisa dibaca",
+    "anchor": "petunjuk arah",
+    "items": [
+      {"label": "Kompas", "value": 360},
+      {"label": "Bintang", "value": 24}
+    ]
+  },
+  {
+    "type": "timeline",
+    "text": "JEJAK PETA",
+    "anchor": "1524",
+    "items": [
+      {"year": "1521", "label": "Peta ditemukan"},
+      {"year": "1522", "label": "Dicatat Duarte"},
+      {"year": "1524", "label": "Hilang setelah badai"}
+    ]
+  },
+  {
+    "type": "question",
+    "text": "ILUSI ATAU NYATA?",
+    "anchor": "ilusi",
+    "pose": "bertanya"
+  }
+]

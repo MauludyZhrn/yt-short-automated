@@ -1,251 +1,275 @@
 {
   "audioPath": "temp/voice_clean.mp3",
-  "bgMusicPath": "temp/bgm_history_classic_07.mp3",
+  "bgMusicPath": "temp/bgm_history_dramatic_01.mp3",
   "bgImages": [
     "temp/bg_0_0_bg_1.jpg",
     "temp/bg_1_0_bg_2.jpg",
     "temp/bg_2_0_bg_3.jpg"
   ],
-  "titleText": "PASUKAN BEBAJ BESIS MENEBUS TEMBOK",
+  "titleText": "BINTANG MENUNTUN LAUT",
   "outroText": "SUKA FAKTA SEJARAH? SUBSCRIBE!",
   "logoPath": "temp/logo_logo.png",
   "subtitles": [
     {
-      "word": "Pada 1790, pasukan",
+      "word": "Pada 1521, penjelajah",
       "start": 0.0,
-      "end": 2.027,
+      "end": 2.181,
       "highlight": false
     },
     {
-      "word": "berbaju besi menabrak",
-      "start": 2.027,
-      "end": 2.906,
+      "word": "Portugis menemukan peta",
+      "start": 2.181,
+      "end": 3.153,
       "highlight": false
     },
     {
-      "word": "kota Romawi di",
-      "start": 2.906,
-      "end": 3.508,
+      "word": "kota kuno yang",
+      "start": 3.153,
+      "end": 3.732,
       "highlight": false
     },
     {
-      "word": "Sungai Narmada, menembus",
-      "start": 3.508,
-      "end": 4.943,
+      "word": "menandai bintang sebagai",
+      "start": 3.732,
+      "end": 4.692,
       "highlight": false
     },
     {
-      "word": "tembok seakan terbuat",
-      "start": 4.943,
-      "end": 5.846,
+      "word": "kompas laut, sebuah",
+      "start": 4.692,
+      "end": 6.0,
       "highlight": false
     },
     {
-      "word": "dari air. Dan",
-      "start": 5.846,
-      "end": 7.086,
+      "word": "alat navigasi rahasia",
+      "start": 6.0,
+      "end": 6.996,
       "highlight": false
     },
     {
-      "word": "yang bikin lo",
-      "start": 7.086,
-      "end": 7.514,
+      "word": "yang mengaburkan batas",
+      "start": 6.996,
+      "end": 7.898,
       "highlight": false
     },
     {
-      "word": "merinding, mereka mengungkap",
-      "start": 7.514,
-      "end": 8.99,
+      "word": "antara langit dan",
+      "start": 7.898,
+      "end": 8.651,
       "highlight": false
     },
     {
-      "word": "rahasia perang tiga",
-      "start": 8.99,
-      "end": 9.776,
+      "word": "samudra. Dan yang",
+      "start": 8.651,
+      "end": 9.989,
       "highlight": false
     },
     {
-      "word": "hari yang terlupakan.",
-      "start": 9.776,
-      "end": 11.139,
+      "word": "bikin lo merinding,",
+      "start": 9.989,
+      "end": 11.097,
       "highlight": false
     },
     {
-      "word": "Sungai Narmada, 6.000",
-      "start": 11.139,
-      "end": 12.828,
+      "word": "peta itu menampilkan",
+      "start": 11.097,
+      "end": 11.894,
       "highlight": false
     },
     {
-      "word": "kilometer panjangnya, menjadi",
-      "start": 12.828,
-      "end": 14.495,
+      "word": "bintang yang bergerak",
+      "start": 11.894,
+      "end": 12.668,
       "highlight": false
     },
     {
-      "word": "medan pertempuran pada",
-      "start": 14.495,
-      "end": 15.401,
+      "word": "sesuai posisi kapal,",
+      "start": 12.668,
+      "end": 14.061,
       "highlight": false
     },
     {
-      "word": "1790, ketika pasukan",
-      "start": 15.401,
-      "end": 17.742,
+      "word": "seolah‑olah bintang itu",
+      "start": 14.061,
+      "end": 15.001,
       "highlight": false
     },
     {
-      "word": "Persia dan India",
-      "start": 17.742,
-      "end": 18.649,
+      "word": "menuntun arah. Kota",
+      "start": 15.001,
+      "end": 16.188,
       "highlight": false
     },
     {
-      "word": "bersatu menaklukkan Romawi.",
-      "start": 18.649,
-      "end": 20.42,
+      "word": "itu, di wilayah",
+      "start": 16.188,
+      "end": 17.378,
       "highlight": false
     },
     {
-      "word": "Pasukan berbaju besi,",
-      "start": 20.42,
-      "end": 21.809,
+      "word": "yang kini dikenal",
+      "start": 17.378,
+      "end": 18.021,
       "highlight": false
     },
     {
-      "word": "dengan helm berlapis",
-      "start": 21.809,
-      "end": 22.654,
+      "word": "sebagai Portugal, dipenuhi",
+      "start": 18.021,
+      "end": 19.616,
       "highlight": false
     },
     {
-      "word": "besi, menembus pertahanan",
-      "start": 22.654,
-      "end": 24.125,
+      "word": "pelaut yang percaya",
+      "start": 19.616,
+      "end": 20.45,
       "highlight": false
     },
     {
-      "word": "kota dalam waktu",
-      "start": 24.125,
-      "end": 24.921,
+      "word": "pada sistem ini.",
+      "start": 20.45,
+      "end": 21.687,
       "highlight": false
     },
     {
-      "word": "72 jam, menewaskan",
-      "start": 24.921,
-      "end": 26.711,
+      "word": "Pada tahun 1522,",
+      "start": 21.687,
+      "end": 23.739,
       "highlight": false
     },
     {
-      "word": "12.000 tentara Romawi",
-      "start": 26.711,
-      "end": 28.059,
+      "word": "seorang pelaut bernama",
+      "start": 23.739,
+      "end": 24.597,
       "highlight": false
     },
     {
-      "word": "dan menghancurkan benteng",
-      "start": 28.059,
-      "end": 29.125,
+      "word": "Duarte mencatat bahwa",
+      "start": 24.597,
+      "end": 25.589,
       "highlight": false
     },
     {
-      "word": "utama. Tapi tunggu,",
-      "start": 29.125,
-      "end": 30.967,
+      "word": "bintang tersebut berubah",
+      "start": 25.589,
+      "end": 26.582,
       "highlight": false
     },
     {
-      "word": "bagian paling gila",
-      "start": 30.967,
-      "end": 31.753,
+      "word": "posisi setiap 24",
+      "start": 26.582,
+      "end": 27.881,
       "highlight": false
     },
     {
-      "word": "belum lo dengar.",
-      "start": 31.753,
-      "end": 32.837,
+      "word": "jam, memberi petunjuk",
+      "start": 27.881,
+      "end": 29.18,
       "highlight": false
     },
     {
-      "word": "Ternyata, pasukan tersebut",
-      "start": 32.837,
-      "end": 34.453,
+      "word": "arah tanpa kompas.",
+      "start": 29.18,
+      "end": 30.646,
       "highlight": false
     },
     {
-      "word": "memakai senjata api",
-      "start": 34.453,
-      "end": 35.31,
+      "word": "Tetapi tunggu, bagian",
+      "start": 30.646,
+      "end": 32.074,
       "highlight": false
     },
     {
-      "word": "yang terbuat dari",
-      "start": 35.31,
-      "end": 35.905,
+      "word": "paling gila belum",
+      "start": 32.074,
+      "end": 32.682,
       "highlight": false
     },
     {
-      "word": "batu bara, yang",
-      "start": 35.905,
-      "end": 37.024,
+      "word": "lo dengar. Pada",
+      "start": 32.682,
+      "end": 33.69,
       "highlight": false
     },
     {
-      "word": "belum diketahui sampai",
-      "start": 37.024,
-      "end": 38.0,
+      "word": "1524, peta itu",
+      "start": 33.69,
+      "end": 35.761,
       "highlight": false
     },
     {
-      "word": "kini. Jadi, apakah",
-      "start": 38.0,
-      "end": 39.89,
+      "word": "hilang begitu saja",
+      "start": 35.761,
+      "end": 36.607,
       "highlight": false
     },
     {
-      "word": "pertempuran ini memicu",
-      "start": 39.89,
-      "end": 40.836,
+      "word": "setelah badai besar",
+      "start": 36.607,
+      "end": 37.391,
       "highlight": false
     },
     {
-      "word": "revolusi teknologi di",
-      "start": 40.836,
-      "end": 41.795,
+      "word": "menghancurkan pelabuhan, meninggalkan",
+      "start": 37.391,
+      "end": 39.389,
       "highlight": false
     },
     {
-      "word": "Asia? Lo penasaran?",
-      "start": 41.795,
-      "end": 44.015,
+      "word": "jejak misteri yang",
+      "start": 39.389,
+      "end": 40.222,
       "highlight": false
     },
     {
-      "word": "Jadi, kembali ke",
-      "start": 44.55,
-      "end": 45.795,
+      "word": "belum terpecahkan. Jadi,",
+      "start": 40.222,
+      "end": 42.283,
       "highlight": false
     },
     {
-      "word": "fakta gila: pasukan",
-      "start": 45.795,
-      "end": 47.253,
+      "word": "lo pernah nggak",
+      "start": 42.283,
+      "end": 42.793,
       "highlight": false
     },
     {
-      "word": "berbaju besi menembus",
-      "start": 47.253,
-      "end": 48.215,
+      "word": "ngerasa kalau bintang",
+      "start": 42.793,
+      "end": 43.545,
       "highlight": false
     },
     {
-      "word": "tembok seperti air.",
-      "start": 48.215,
-      "end": 49.365,
+      "word": "itu lebih dari",
+      "start": 43.545,
+      "end": 44.128,
+      "highlight": false
+    },
+    {
+      "word": "sekadar cahaya? Apakah",
+      "start": 44.128,
+      "end": 45.844,
+      "highlight": false
+    },
+    {
+      "word": "bintang itu benar-benar",
+      "start": 45.844,
+      "end": 46.839,
+      "highlight": false
+    },
+    {
+      "word": "menuntun pelaut, atau",
+      "start": 46.839,
+      "end": 48.191,
+      "highlight": false
+    },
+    {
+      "word": "sekadar ilusi?",
+      "start": 48.191,
+      "end": 49.148,
       "highlight": false
     }
   ],
-  "durationInFrames": 1485,
+  "durationInFrames": 1478,
   "fps": 30,
   "theme": "history",
   "motionCues": [
@@ -253,60 +277,39 @@
       "type": "timeline",
       "text": "LINIMASA",
       "sub": "",
-      "start": 9.42,
-      "end": 13.82,
+      "start": 21.91,
+      "end": 26.31,
       "items": [
         {
-          "year": "1790",
-          "label": "Awal"
+          "year": "1522",
+          "label": "Catatan"
         },
         {
-          "year": "1790",
-          "label": "Tengah"
-        },
-        {
-          "year": "1790",
-          "label": "Akhir"
+          "year": "1524",
+          "label": "Badai"
         }
       ]
-    },
-    {
-      "type": "year",
-      "text": "1790",
-      "sub": "",
-      "start": 15.25,
-      "end": 18.05
     },
     {
       "type": "stat",
-      "text": "12.000",
-      "sub": "korban",
-      "start": 26.56,
-      "end": 29.56
+      "text": "24 JAM",
+      "sub": "Perubahan Posisi",
+      "start": 27.19,
+      "end": 30.19
     },
     {
-      "type": "compare",
-      "text": "KEKUATAN",
-      "sub": "batu bara",
-      "start": 34.6,
-      "end": 38.6,
-      "items": [
-        {
-          "label": "batu bara",
-          "value": 1.0
-        },
-        {
-          "label": "batu",
-          "value": 0.0
-        }
-      ]
+      "type": "year",
+      "text": "1524",
+      "sub": "",
+      "start": 33.54,
+      "end": 36.34
     },
     {
       "type": "question",
-      "text": "REVOLUSI TEKNOLOGI DI ASIA?",
+      "text": "APAKAH BINTANG BENAR?",
       "sub": "",
-      "start": 40.69,
-      "end": 43.29
+      "start": 43.14,
+      "end": 45.74
     }
   ],
   "bgmVolume": 0.13

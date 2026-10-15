@@ -1,0 +1,64 @@
+[
+  {
+    "type": "keyword",
+    "text": "BERDENYUT SEPERTI JANTUNG",
+    "sub": "bukan kedip biasa",
+    "start": 4.03,
+    "end": 6.43,
+    "verb": "pop",
+    "pose": "wow"
+  },
+  {
+    "type": "keyword",
+    "text": "NADA DARI GETARAN",
+    "sub": "bisa kita dengar",
+    "start": 12.29,
+    "end": 14.69,
+    "verb": "pop",
+    "pose": "berfikir"
+  },
+  {
+    "type": "keyword",
+    "text": "BINTANG NEUTRON",
+    "sub": "rasi Cygnus",
+    "start": 18.98,
+    "end": 21.38,
+    "verb": "pop"
+  },
+  {
+    "type": "stat",
+    "text": "4.200 TAHUN CAHAYA",
+    "sub": "jarak dari Bumi",
+    "start": 21.88,
+    "end": 24.88,
+    "verb": "countup",
+    "pose": "utama"
+  },
+  {
+    "type": "stat",
+    "text": "716 KALI PER DETIK",
+    "sub": "rotasinya sendiri",
+    "start": 25.59,
+    "end": 28.59,
+    "verb": "countup",
+    "pose": "wow"
+  },
+  {
+    "type": "percent",
+    "text": "27%",
+    "sub": "massa yang lenyap tanpa jejak",
+    "start": 33.45,
+    "end": 36.85,
+    "verb": "countup",
+    "pose": "terkejut"
+  },
+  {
+    "type": "question",
+    "text": "LANGIT PUNYA SUARA?",
+    "sub": "",
+    "start": 42.58,
+    "end": 45.18,
+    "verb": "wave",
+    "pose": "bertanya"
+  }
+]

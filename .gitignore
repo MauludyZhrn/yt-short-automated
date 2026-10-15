@@ -11,6 +11,7 @@ social_accounts.json
 
 # Data runtime
 publish_log.json
+social_analytics_status.json
 metrix_bias.json
 gui_settings.json
 gui_history.json

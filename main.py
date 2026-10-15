@@ -39,6 +39,12 @@ except Exception as _exc:
     print(f"⚠️ trend_researcher (NexaTrend) tidak bisa dimuat: {_exc}")
 
 try:
+    from modules import row_platforms       # target publish per baris Content Planner
+except Exception as _exc:
+    row_platforms = None
+    print(f"⚠️ row_platforms tidak bisa dimuat: {_exc}")
+
+try:
     from modules.qc_inspector import inspect_video_quality         # Agent: ByteGuard
 except Exception as _exc:
     inspect_video_quality = None
@@ -59,9 +65,10 @@ except Exception as _exc:
     print(f"⚠️ community_manager (EchoBee) tidak bisa dimuat: {_exc}")
 
 try:
-    from modules.multi_publisher import publish_to_platforms       # Agent: CrossByte
+    from modules.multi_publisher import publish_to_platforms, publish_summary   # Agent: CrossByte
 except Exception as _exc:
     publish_to_platforms = None
+    publish_summary = None
     print(f"⚠️ multi_publisher (CrossByte) tidak bisa dimuat: {_exc}")
 
 
@@ -143,14 +150,23 @@ def _auto_publish(row_idx, path, niche, topic, hook, script, platforms, channel_
             notify_office(agent="cross", action="alert", message=f"CrossByte: Distribusi gagal — {str(exc)[:80]}", progress=0)
             results = {}
 
-        for pid, info in results.items():
-            if info.get("ok"):
-                if pid == "youtube":
-                    main_url, real_ok = info.get("url") or main_url, True
-                elif main_url is None:
-                    main_url = info.get("url")
+        # Ringkas hasil: real_ok = minimal satu platform non-dummy (beneran tayang)
+        if publish_summary is not None:
+            summary = publish_summary(results)
+            main_url, real_ok = summary["main_url"], summary["real_ok"]
+            for pid in summary["skipped"]:
+                print(f"⏭️ {pid} dilewati: {results[pid].get('error')}")
+        else:
+            for pid, info in results.items():
+                if info.get("ok"):
+                    if pid == "youtube":
+                        main_url, real_ok = info.get("url") or main_url, True
+                    elif main_url is None:
+                        main_url = info.get("url")
+        ok_n = sum(1 for i in results.values() if i.get("ok"))
         notify_office(agent="cross", action="idle",
-                      message="CrossByte: Distribusi selesai." if results else "CrossByte: Tidak ada platform terpublish.",
+                      message=f"CrossByte: Distribusi selesai ({ok_n}/{len(results)} platform)." if results
+                      else "CrossByte: Tidak ada platform terpublish.",
                       progress=100)
     else:
         # Fallback jika modul CrossByte tidak termuat: upload YouTube langsung.
@@ -287,12 +303,18 @@ def main(mode=UPLOAD_MODE, retries=1, platforms=None, should_stop=None, channel_
     print("🚀 Checking Google Sheets for pending content...")
     task = fetch_next_ready_row("Shorts Content Planner")
 
-    # Agent: NexaTrend — antrean kosong -> riset ide viral otomatis & isi ulang Sheets.
+    # Agent: NexaTrend — antrean kosong -> cek tren per platform & isi ulang Sheets.
     if not task and run_nexatrend_research is not None:
-        notify_office(agent="nexa", action="researching", message="NexaTrend: Antrean kosong, riset topik viral baru...", progress=0)
+        notify_office(agent="nexa", action="researching", message="NexaTrend: Antrean kosong, mengecek tren tiap platform...", progress=0)
         try:
-            n = run_nexatrend_research(count=3)
-            notify_office(agent="nexa", action="idle", message=f"NexaTrend: {n} ide baru ditambahkan.", progress=100)
+            # NexaTrend mengecek tren untuk SETIAP platform yang terhubung (bukan cuma
+            # default automation), lalu menandai tiap ide dengan tempat publish-nya.
+            res = run_nexatrend_research(count=3)
+            added = res.get("added", 0) if isinstance(res, dict) else (res or 0)
+            detail = ""
+            if isinstance(res, dict) and res.get("per_platform"):
+                detail = " (" + ", ".join(f"{k}:{v}" for k, v in res["per_platform"].items() if v) + ")"
+            notify_office(agent="nexa", action="idle", message=f"NexaTrend: {added} ide baru{detail}.", progress=100)
         except Exception as exc:
             print(f"⚠️ NexaTrend gagal riset ide: {exc}")
             notify_office(agent="nexa", action="alert", message=f"NexaTrend: Gagal — {str(exc)[:80]}", progress=0)
@@ -304,7 +326,15 @@ def main(mode=UPLOAD_MODE, retries=1, platforms=None, should_stop=None, channel_
 
     row_idx, niche = task["row_index"], task["niche"]
     topic, hook_style = task["topic"], task["hook_style"]
+
+    # ---- Target publish baris ini: platform milik baris > default automation ----
+    row_plats = task.get("platforms") if isinstance(task, dict) else None
+    if row_platforms is not None:
+        row_plats = row_platforms.resolve(row_idx, row_plats, platforms)
+    else:
+        row_plats = list(row_plats) if row_plats else list(platforms)
     print(f"🎯 Memproses Baris #{row_idx} | Topic: {topic} ({niche})")
+    print(f"📍 Target publish baris #{row_idx}: {', '.join(row_plats)}")
     update_row_status(row_idx, "Processing")
 
     # ---- Tahap 1: render (dengan retry) ----
@@ -334,7 +364,7 @@ def main(mode=UPLOAD_MODE, retries=1, platforms=None, should_stop=None, channel_
     uploaded = False
     if mode == "auto":
         url, real_ok = _auto_publish(row_idx, final_video_path, niche, topic, hook_style,
-                                     script_text, platforms, channel_name)
+                                     script_text, row_plats, channel_name)
         if real_ok:
             update_row_status(row_idx, "Done", video_path=url or final_video_path)
             uploaded = True

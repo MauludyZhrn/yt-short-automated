@@ -40,3 +40,5 @@ Backend `.py` untuk mereka belum ada. Saat siap, kirim event ke `/ws/office` / `
 Pilih Privasi = **Jadwalkan** -> muncul kalender mini + pemilih jam (menit per 5), ringkasan "Sabtu, 31 Oktober 2026 · 09:35 (28 hari lagi)",
 dan tombol pilih cepat (+1 jam, Hari ini 18:00, Besok 09:00, Besok 18:00, Sabtu 10:00). Hari lampau tidak bisa dipilih, waktu minimal 5 menit dari sekarang.
 Default saat pertama dipilih: besok 18:00. Kode ada di `web/sched.js`; nilai tetap dikirim ke server sebagai `YYYY-MM-DD HH:MM` (server tidak berubah).
+
+

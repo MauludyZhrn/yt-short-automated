@@ -56,6 +56,13 @@ except Exception as _exc:
     multi_publisher = None
     print(f"⚠️ Modul multi_publisher tidak bisa dimuat: {_exc}")
 
+# Target publish per baris Content Planner (tiap konten punya tempat publish sendiri)
+try:
+    from modules import row_platforms
+except Exception as _exc:
+    row_platforms = None
+    print(f"⚠️ Modul row_platforms tidak bisa dimuat: {_exc}")
+
 # Agen Metrix: Data Analyst (laporan performa, bias engagement untuk tab Analytics)
 try:
     from modules.data_analyst import MetrixDataAnalyst, load_bias, REPORTS_DIR as METRIX_REPORTS_DIR
@@ -342,7 +349,22 @@ def normalize_row(raw):
     row.setdefault("id", "-")
     row["is_url"] = is_url(row["output"])
     row["exists"] = row["is_url"] or (bool(row["output"]) and os.path.exists(os.path.abspath(row["output"])))
+    row["platforms"] = row_platforms_of(row)
     return row
+
+
+def row_platforms_of(row):
+    """Target publish sebuah baris: kolom Sheets > override row_platforms.json > default Settings."""
+    default = state.settings.get("default_platforms") or ["youtube"]
+    if row_platforms is not None:
+        return row_platforms.resolve(row.get("id"), row.get("platforms") or row.get("platform"), default)
+    raw = row.get("platforms") or row.get("platform")
+    if raw:
+        plats = [p.strip().lower() for p in str(raw).replace("|", ",").split(",") if p.strip()]
+        plats = [p for p in plats if p in PLATFORM_META]
+        if plats:
+            return plats
+    return list(default)
 
 def status_key(row):
     return str(row.get("status", "")).strip().lower()
@@ -599,6 +621,111 @@ def generate_ideas(background_tasks: BackgroundTasks):
             
     background_tasks.add_task(_generate_task)
     return {"status": "started", "message": "Generasi 5 ide konten dimulai di background."}
+
+
+class PlatformIn(BaseModel):
+    id: str
+    platforms: list[str]
+
+
+class BulkPlatformIn(BaseModel):
+    ids: list[str]
+    platforms: list[str]
+
+
+class ResearchIn(BaseModel):
+    platforms: list[str] = []
+    count: int = 3
+
+
+def _clean_platforms(values):
+    plats = [str(p).strip().lower() for p in (values or [])]
+    plats = [p for p in dict.fromkeys(plats) if p in PLATFORM_META]
+    if not plats:
+        return None
+    return plats
+
+
+@app.put("/api/planner/platforms")
+def planner_set_platforms(req: PlatformIn):
+    """Set target publish untuk SATU baris Content Planner."""
+    plats = _clean_platforms(req.platforms)
+    if not plats:
+        raise HTTPException(400, "Pilih minimal satu platform yang dikenal.")
+    if row_platforms is None:
+        raise HTTPException(503, "modules/row_platforms.py tidak termuat di server ini.")
+    saved = row_platforms.set_row_platforms(req.id, plats, sheet_name=SHEET_NAME)
+    _patch_rows_platforms({str(req.id): saved})
+    print(f"🎯 Target publish baris #{req.id} diatur ke: {', '.join(saved)}")
+    return {"id": str(req.id), "platforms": saved}
+
+
+@app.put("/api/planner/platforms/bulk")
+def planner_set_platforms_bulk(req: BulkPlatformIn):
+    """Set target publish banyak baris sekaligus (dipakai tombol terapkan massal di Planner)."""
+    plats = _clean_platforms(req.platforms)
+    if not plats:
+        raise HTTPException(400, "Pilih minimal satu platform yang dikenal.")
+    if not req.ids:
+        raise HTTPException(400, "Pilih minimal satu baris.")
+    if row_platforms is None:
+        raise HTTPException(503, "modules/row_platforms.py tidak termuat di server ini.")
+    mapping = {str(i): plats for i in req.ids}
+    row_platforms.set_many(mapping.items(), sheet_name=SHEET_NAME)
+    _patch_rows_platforms(mapping)
+    print(f"🎯 Target publish {len(mapping)} baris diatur ke: {', '.join(plats)}")
+    return {"updated": len(mapping), "platforms": plats}
+
+
+def _patch_rows_platforms(mapping):
+    """Perbarui cache baris di memori supaya tabel langsung berubah tanpa tunggu Sheets."""
+    for r in (state.rows or []):
+        hit = mapping.get(str(r.get("id")))
+        if hit:
+            r["platforms"] = list(hit)
+
+
+@app.get("/api/trends")
+def trends():
+    """NexaTrend: sinyal tren per platform (karakter algoritma + pemenang terakhir akun ini)."""
+    try:
+        from modules import trend_researcher as tr
+        data = tr.trend_snapshot()
+    except Exception as exc:
+        raise HTTPException(503, f"NexaTrend tidak bisa membaca tren: {exc}")
+    by_id = {p["id"]: p for p in _platform_list()}
+    for d in data:
+        d["ready"] = bool(by_id.get(d["id"], {}).get("ready", False))
+    return {"platforms": data, "bias": load_bias()}
+
+
+@app.post("/api/planner/research")
+def planner_research(req: ResearchIn, background_tasks: BackgroundTasks):
+    """NexaTrend: jalankan riset tren per platform sekarang (ide langsung masuk Sheets)."""
+    if state._generating:
+        return {"status": "processing", "message": "Proses riset sedang berjalan."}
+
+    def _research_task():
+        state._generating = True
+        try:
+            from modules.trend_researcher import run_nexatrend_research
+            print("\n🕵️‍♂️ NexaTrend: riset tren per platform dipicu dari Content Planner...")
+            res = run_nexatrend_research(count=max(1, min(int(req.count or 3), 12)),
+                                         platforms=req.platforms or None,
+                                         sheet_name=SHEET_NAME)
+            added = res.get("added", 0) if isinstance(res, dict) else (res or 0)
+            if isinstance(res, dict) and res.get("per_platform"):
+                print("📊 NexaTrend per platform: " +
+                      ", ".join(f"{k}={v}" for k, v in res["per_platform"].items()))
+            print(f"✅ NexaTrend selesai: {added} ide baru.")
+        except Exception as exc:
+            print(f"❌ NexaTrend gagal: {exc}")
+        finally:
+            state._generating = False
+            state._rows_ts = 0.0
+
+    background_tasks.add_task(_research_task)
+    return {"status": "started", "message": "NexaTrend mengecek tren tiap platform di background."}
 
 # ============================================================
 # METRIX (Agent Data Analyst) — tab Analytics, laporan performa & export
@@ -1054,54 +1181,20 @@ class PublishIn(BaseModel):
     schedule: str = ""
     synthetic: bool = True
     notify: bool = False
-    platforms: list[str] = ["youtube"]
+    platforms: list[str] = []       # kosong = pakai target publish milik baris (kolom Platform di Planner)
+    captions: dict[str, str] = {}   # override caption per-platform (TikTok/IG/FB); kosong = turunan otomatis dari judul YouTube
 
 
-def _publish_task(row_id, path, title, description, tags, category_id, privacy, publish_at,
-                  synthetic, notify, platforms):
+class CaptionPreviewIn(BaseModel):
+    title: str = ""
+    description: str = ""
+    tags: list[str] = []
+    platforms: list[str] = []
+
+
+def _publish_finish(platforms, row_id, path, publish_at):
+    """Penutup bersama untuk semua jalur publish: ringkas hasil, catat analitik, update Sheets."""
     items = state.pub["items"]
-
-    def refresh_overall():
-        state.pub["progress"] = int(sum(i["progress"] for i in items.values()) / max(1, len(items)))
-
-    def make_cb(pid):
-        def cb(pct):
-            items[pid]["progress"] = pct
-            refresh_overall()
-        return cb
-
-    for pid in platforms:
-        label, it = PLATFORM_META[pid]["label"], items[pid]
-        it["status"] = "running"
-        state.pub["message"] = f"Uploading ke {label}…"
-        try:
-            if pid == "youtube":
-                from modules.youtube_uploader import upload_video_to_youtube
-                print(f"\n📤 Memulai upload YouTube untuk baris #{row_id}: {title}...")
-                url = upload_video_to_youtube(
-                    video_path=path, title=title, description=description, tags=tags,
-                    category_id=category_id, privacy_status="private" if publish_at else privacy,
-                    publish_at=publish_at, synthetic_media=synthetic, notify_subscribers=notify,
-                    progress_callback=make_cb(pid))
-            else:
-                caption = social.build_caption(pid, title, description, tags)
-                url = social.upload(pid, path, caption, privacy="private" if publish_at else privacy,
-                                    publish_at=publish_at, progress_callback=make_cb(pid))["url"]
-            it.update(status="ok", progress=100, url=url)
-            print(f"✅ {label}: berhasil" + (f" → {url}" if url else ""))
-        except Exception as exc:
-            print(f"❌ Upload {label} gagal: {exc}")
-            if str(state.settings.get("log_level")).lower() == "debug":
-                print("[DEBUG] " + traceback.format_exc())
-            it.update(status="error", error=str(exc))
-        refresh_overall()
-        if social is not None:
-            try:
-                social.log_publish(row_id, pid, {"ok": it["status"] == "ok", "url": it.get("url"),
-                                                 "error": it.get("error"), "title": title})
-            except Exception:
-                pass
-
     oks = [p for p in platforms if items[p]["status"] == "ok"]
     fails = [p for p in platforms if items[p]["status"] == "error"]
     real_ok = [p for p in oks if not PLATFORM_META[p].get("dummy")]
@@ -1138,11 +1231,111 @@ def _publish_task(row_id, path, title, description, tags, category_id, privacy, 
     state._rows_ts = 0.0
 
 
+def _publish_task(row_id, path, title, description, tags, category_id, privacy, publish_at,
+                  synthetic, notify, platforms, captions=None):
+    captions = captions or {}
+    items = state.pub["items"]
+    row = _row(row_id) or {}
+
+    def refresh_overall():
+        state.pub["progress"] = int(sum(i["progress"] for i in items.values()) / max(1, len(items)))
+
+    def make_cb(pid):
+        def cb(pct):
+            if pid in items:
+                items[pid]["progress"] = pct
+            refresh_overall()
+        return cb
+
+    # --- Jalur utama: CrossByte (mesin publish yang sama dengan mode Auto di main.py) ---
+    if multi_publisher is not None:
+        try:
+            results = multi_publisher.publish_to_platforms(
+                video_path=path,
+                topic=row.get("topic", ""),
+                niche=row.get("niche", ""),
+                hook_style=row.get("hook", ""),
+                platforms=platforms,
+                row_idx=row_id,
+                channel_name=state.settings.get("channel_name", DEFAULT_CHANNEL_NAME),
+                privacy_status=privacy,
+                publish_at=publish_at,
+                title=title, description=description, tags=tags,
+                category_id=category_id,
+                synthetic_media=synthetic,
+                notify_subscribers=notify,
+                captions=captions,
+                platform_progress_callback=lambda pid, pct: make_cb(pid)(pct),
+                skip_unconnected=False,
+            )
+        except Exception as exc:
+            print(f"❌ CrossByte gagal memproses distribusi: {exc}")
+            if str(state.settings.get("log_level")).lower() == "debug":
+                print("[DEBUG] " + traceback.format_exc())
+            results = None
+
+        if results is not None:
+            for pid, info in results.items():
+                it = items.get(pid)
+                if not it:
+                    continue
+                if info.get("ok"):
+                    it.update(status="ok", progress=100, url=info.get("url"))
+                    print(f"✅ {info.get('label') or PLATFORM_META[pid]['label']}: berhasil"
+                          + (f" → {info.get('url')}" if info.get("url") else ""))
+                else:
+                    reason = info.get("error") or "Gagal"
+                    it.update(status="error", error=reason, progress=100)
+                    print(f"❌ {info.get('label') or PLATFORM_META[pid]['label']}: {reason}")
+            refresh_overall()
+            _publish_finish(platforms, row_id, path, publish_at)
+            return
+
+    # --- Fallback: upload langsung bila modul CrossByte tidak termuat ---
+    for pid in platforms:
+        label, it = PLATFORM_META[pid]["label"], items[pid]
+        it["status"] = "running"
+        state.pub["message"] = f"Uploading ke {label}…"
+        try:
+            if pid == "youtube":
+                from modules.youtube_uploader import upload_video_to_youtube
+                print(f"\n📤 Memulai upload YouTube untuk baris #{row_id}: {title}...")
+                url = upload_video_to_youtube(
+                    video_path=path, title=title, description=description, tags=tags,
+                    category_id=category_id, privacy_status="private" if publish_at else privacy,
+                    publish_at=publish_at, synthetic_media=synthetic, notify_subscribers=notify,
+                    progress_callback=make_cb(pid))
+            else:
+                override = (captions.get(pid) or "").strip()
+                caption = override or social.build_caption(pid, title, description, tags)
+                res = social.upload(pid, path, caption, privacy="private" if publish_at else privacy,
+                                    publish_at=publish_at, progress_callback=make_cb(pid))
+                url, it["post_id"] = res["url"], res.get("id")
+            it.update(status="ok", progress=100, url=url)
+            print(f"✅ {label}: berhasil" + (f" → {url}" if url else ""))
+        except Exception as exc:
+            print(f"❌ Upload {label} gagal: {exc}")
+            if str(state.settings.get("log_level")).lower() == "debug":
+                print("[DEBUG] " + traceback.format_exc())
+            it.update(status="error", error=str(exc))
+        refresh_overall()
+        if social is not None:
+            try:
+                social.log_publish(row_id, pid, {"ok": it["status"] == "ok", "url": it.get("url"),
+                                                 "post_id": it.get("post_id"), "error": it.get("error"),
+                                                 "title": title})
+            except Exception:
+                pass
+
+    _publish_finish(platforms, row_id, path, publish_at)
+
+
 @app.post("/api/video/publish")
 def publish_video(req: PublishIn):
     if state.pub["busy"]:
         raise HTTPException(409, "Upload lain sedang berjalan.")
-    platforms = list(dict.fromkeys(req.platforms))
+    row_for_plats = _row(req.id)
+    platforms = list(dict.fromkeys(req.platforms or (row_for_plats or {}).get("platforms") or ["youtube"]))
     if not platforms:
         raise HTTPException(400, "Pilih minimal satu platform tujuan.")
     unknown = [p for p in platforms if p not in PLATFORM_META]
@@ -1179,8 +1372,25 @@ def publish_video(req: PublishIn):
                                "progress": 0, "url": None, "error": None} for p in platforms}}
     threading.Thread(target=_publish_task, daemon=True, args=(
         req.id, path, title, req.description, req.tags, CATEGORY_CHOICES.get(req.category, "27"),
-        privacy, publish_at, req.synthetic, req.notify, platforms)).start()
+        privacy, publish_at, req.synthetic, req.notify, platforms, req.captions)).start()
     return {"status": "started"}
+
+
+@app.post("/api/caption/preview")
+def caption_preview(req: CaptionPreviewIn):
+    """Pratinjau caption otomatis per-platform (TikTok/IG/FB), diturunkan dari judul/deskripsi/tag YouTube."""
+    if not social:
+        raise HTTPException(503, "modules/social_real.py tidak termuat.")
+    out = {}
+    for pid in req.platforms:
+        if pid == "youtube" or pid not in PLATFORM_META:
+            continue
+        try:
+            out[pid] = social.build_caption(pid, req.title, req.description, req.tags)
+        except Exception as exc:
+            out[pid] = ""
+            print(f"⚠️ Caption preview {pid} gagal: {exc}")
+    return {"captions": out}
 
 
 # ============================================================

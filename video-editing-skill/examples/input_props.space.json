@@ -1,0 +1,874 @@
+{
+  "audioPath": "",
+  "bgMusicPath": null,
+  "bgImages": [],
+  "titleText": "",
+  "outroText": "",
+  "logoPath": null,
+  "subtitles": [
+    {
+      "text": "Di kedalaman 13 miliar",
+      "start": 0.0,
+      "end": 1.538,
+      "words": [
+        0,
+        0
+      ]
+    },
+    {
+      "text": "tahun cahaya,",
+      "start": 1.388,
+      "end": 2.667,
+      "words": [
+        1,
+        1
+      ]
+    },
+    {
+      "text": "ada sebuah bintang yang",
+      "start": 2.267,
+      "end": 3.681,
+      "words": [
+        1,
+        2
+      ]
+    },
+    {
+      "text": "berdenyut seperti jantung.",
+      "start": 3.531,
+      "end": 5.25,
+      "words": [
+        2,
+        2
+      ]
+    },
+    {
+      "text": "Bukan kedip biasa,",
+      "start": 5.2,
+      "end": 6.83,
+      "words": [
+        3,
+        3
+      ]
+    },
+    {
+      "text": "tapi getaran yang mengubah",
+      "start": 6.43,
+      "end": 7.932,
+      "words": [
+        3,
+        4
+      ]
+    },
+    {
+      "text": "bentuknya sendiri setiap detik.",
+      "start": 7.782,
+      "end": 9.831,
+      "words": [
+        4,
+        5
+      ]
+    },
+    {
+      "text": "Dan yang bikin lo",
+      "start": 9.781,
+      "end": 11.469,
+      "words": [
+        6,
+        6
+      ]
+    },
+    {
+      "text": "merinding,",
+      "start": 11.319,
+      "end": 12.2,
+      "words": [
+        7,
+        7
+      ]
+    },
+    {
+      "text": "getaran itu menghasilkan nada",
+      "start": 11.8,
+      "end": 13.392,
+      "words": [
+        7,
+        8
+      ]
+    },
+    {
+      "text": "yang bisa kita dengar",
+      "start": 13.242,
+      "end": 14.973,
+      "words": [
+        8,
+        9
+      ]
+    },
+    {
+      "text": "kalau diubah jadi suara.",
+      "start": 14.823,
+      "end": 16.719,
+      "words": [
+        9,
+        9
+      ]
+    },
+    {
+      "text": "Bintang itu bernama ...",
+      "start": 16.669,
+      "end": 18.608,
+      "words": [
+        10,
+        10
+      ]
+    },
+    {
+      "text": "sebuah bintang neutron di",
+      "start": 18.558,
+      "end": 20.246,
+      "words": [
+        11,
+        11
+      ]
+    },
+    {
+      "text": "rasi Cygnus,",
+      "start": 20.096,
+      "end": 21.201,
+      "words": [
+        12,
+        12
+      ]
+    },
+    {
+      "text": "berjarak 4.200 tahun cahaya",
+      "start": 20.801,
+      "end": 22.631,
+      "words": [
+        12,
+        13
+      ]
+    },
+    {
+      "text": "dari Bumi.",
+      "start": 22.481,
+      "end": 23.573,
+      "words": [
+        13,
+        13
+      ]
+    },
+    {
+      "text": "Setiap detik,",
+      "start": 23.523,
+      "end": 24.802,
+      "words": [
+        14,
+        14
+      ]
+    },
+    {
+      "text": "ia memutar dirinya 716",
+      "start": 24.402,
+      "end": 25.981,
+      "words": [
+        14,
+        15
+      ]
+    },
+    {
+      "text": "kali,",
+      "start": 25.831,
+      "end": 26.615,
+      "words": [
+        15,
+        15
+      ]
+    },
+    {
+      "text": "lebih cepat dari baling-baling",
+      "start": 26.215,
+      "end": 27.878,
+      "words": [
+        15,
+        16
+      ]
+    },
+    {
+      "text": "pesawat.",
+      "start": 27.728,
+      "end": 28.538,
+      "words": [
+        16,
+        16
+      ]
+    },
+    {
+      "text": "Tetapi tunggu,",
+      "start": 28.488,
+      "end": 29.688,
+      "words": [
+        17,
+        17
+      ]
+    },
+    {
+      "text": "bagian paling gila belum",
+      "start": 29.288,
+      "end": 30.946,
+      "words": [
+        17,
+        18
+      ]
+    },
+    {
+      "text": "lo dengar.",
+      "start": 30.796,
+      "end": 31.965,
+      "words": [
+        18,
+        18
+      ]
+    },
+    {
+      "text": "Wahana Kepler mencatat bahwa",
+      "start": 31.915,
+      "end": 33.604,
+      "words": [
+        19,
+        19
+      ]
+    },
+    {
+      "text": "27 persen massa bintang",
+      "start": 33.454,
+      "end": 35.142,
+      "words": [
+        20,
+        20
+      ]
+    },
+    {
+      "text": "ini lenyap tanpa jejak,",
+      "start": 34.992,
+      "end": 36.931,
+      "words": [
+        21,
+        21
+      ]
+    },
+    {
+      "text": "seolah-olah ada yang mengambilnya.",
+      "start": 36.531,
+      "end": 38.469,
+      "words": [
+        22,
+        22
+      ]
+    },
+    {
+      "text": "Para astronom menyebut ini",
+      "start": 38.419,
+      "end": 40.108,
+      "words": [
+        23,
+        23
+      ]
+    },
+    {
+      "text": "anomali,",
+      "start": 39.958,
+      "end": 40.814,
+      "words": [
+        24,
+        24
+      ]
+    },
+    {
+      "text": "bukan kesalahan alat.",
+      "start": 40.414,
+      "end": 41.896,
+      "words": [
+        24,
+        24
+      ]
+    },
+    {
+      "text": "Jadi,",
+      "start": 41.846,
+      "end": 42.612,
+      "words": [
+        25,
+        25
+      ]
+    },
+    {
+      "text": "kalau langit malam ternyata",
+      "start": 42.212,
+      "end": 44.121,
+      "words": [
+        25,
+        26
+      ]
+    },
+    {
+      "text": "punya suara,",
+      "start": 43.971,
+      "end": 45.177,
+      "words": [
+        26,
+        26
+      ]
+    },
+    {
+      "text": "lo berani dengar sendirian?",
+      "start": 44.777,
+      "end": 46.477,
+      "words": [
+        26,
+        27
+      ]
+    }
+  ],
+  "durationInFrames": 1452,
+  "fps": 30,
+  "theme": "space",
+  "motionCues": [
+    {
+      "type": "keyword",
+      "text": "BERDENYUT SEPERTI JANTUNG",
+      "sub": "bukan kedip biasa",
+      "start": 4.03,
+      "end": 6.43,
+      "verb": "pop",
+      "pose": "wow"
+    },
+    {
+      "type": "keyword",
+      "text": "NADA DARI GETARAN",
+      "sub": "bisa kita dengar",
+      "start": 12.29,
+      "end": 14.69,
+      "verb": "pop",
+      "pose": "berfikir"
+    },
+    {
+      "type": "keyword",
+      "text": "BINTANG NEUTRON",
+      "sub": "rasi Cygnus",
+      "start": 18.98,
+      "end": 21.38,
+      "verb": "pop"
+    },
+    {
+      "type": "stat",
+      "text": "4.200 TAHUN CAHAYA",
+      "sub": "jarak dari Bumi",
+      "start": 21.88,
+      "end": 24.88,
+      "verb": "countup",
+      "pose": "utama"
+    },
+    {
+      "type": "stat",
+      "text": "716 KALI PER DETIK",
+      "sub": "rotasinya sendiri",
+      "start": 25.59,
+      "end": 28.59,
+      "verb": "countup",
+      "pose": "wow"
+    },
+    {
+      "type": "percent",
+      "text": "27%",
+      "sub": "massa yang lenyap tanpa jejak",
+      "start": 33.45,
+      "end": 36.85,
+      "verb": "countup",
+      "pose": "terkejut"
+    },
+    {
+      "type": "question",
+      "text": "LANGIT PUNYA SUARA?",
+      "sub": "",
+      "start": 42.58,
+      "end": 45.18,
+      "verb": "wave",
+      "pose": "bertanya"
+    }
+  ],
+  "bgmVolume": 0.15,
+  "subtitleStyle": "karaoke",
+  "storyboard": {
+    "shots": [
+      {
+        "id": "s1",
+        "from": 0,
+        "durationFrames": 158,
+        "energy": "high",
+        "hero": true,
+        "napas": false,
+        "segment": "hook",
+        "voWords": [
+          0,
+          2
+        ],
+        "visual": {
+          "type": "bg",
+          "slot": 0,
+          "motion": "kenburns"
+        },
+        "caption": {
+          "style": "karaoke"
+        },
+        "transitionIn": "cut",
+        "transitionSec": 0.0,
+        "verb": null
+      },
+      {
+        "id": "s2",
+        "from": 158,
+        "durationFrames": 128,
+        "energy": "medium",
+        "hero": false,
+        "napas": false,
+        "segment": "setup",
+        "voWords": [
+          3,
+          5
+        ],
+        "visual": {
+          "type": "bg",
+          "slot": 1,
+          "motion": "kenburns"
+        },
+        "caption": {
+          "style": "karaoke"
+        },
+        "transitionIn": "dissolve",
+        "transitionSec": 0.7,
+        "verb": null
+      },
+      {
+        "id": "s3",
+        "from": 286,
+        "durationFrames": 198,
+        "energy": "medium",
+        "hero": false,
+        "napas": false,
+        "segment": "chain",
+        "voWords": [
+          6,
+          9
+        ],
+        "visual": {
+          "type": "bg",
+          "slot": 2,
+          "motion": "kenburns"
+        },
+        "caption": {
+          "style": "karaoke"
+        },
+        "transitionIn": "cut",
+        "transitionSec": 0.0,
+        "verb": null
+      },
+      {
+        "id": "s3n",
+        "from": 484,
+        "durationFrames": 42,
+        "energy": "low",
+        "hero": false,
+        "napas": true,
+        "segment": "chain",
+        "voWords": null,
+        "visual": {
+          "type": "bg",
+          "slot": 3,
+          "motion": "drift"
+        },
+        "caption": {
+          "style": "none"
+        },
+        "transitionIn": "dissolve",
+        "transitionSec": 0.7,
+        "verb": null
+      },
+      {
+        "id": "s4",
+        "from": 526,
+        "durationFrames": 48,
+        "energy": "medium",
+        "hero": false,
+        "napas": false,
+        "segment": "chain",
+        "voWords": [
+          10,
+          10
+        ],
+        "visual": {
+          "type": "bg",
+          "slot": 3,
+          "motion": "kenburns"
+        },
+        "caption": {
+          "style": "karaoke"
+        },
+        "transitionIn": "fade",
+        "transitionSec": 0.5,
+        "verb": null
+      },
+      {
+        "id": "s5",
+        "from": 573,
+        "durationFrames": 140,
+        "energy": "medium",
+        "hero": false,
+        "napas": false,
+        "segment": "chain",
+        "voWords": [
+          11,
+          13
+        ],
+        "visual": {
+          "type": "bg",
+          "slot": 0,
+          "motion": "kenburns"
+        },
+        "caption": {
+          "style": "karaoke"
+        },
+        "transitionIn": "cut",
+        "transitionSec": 0.0,
+        "verb": null
+      },
+      {
+        "id": "s5n",
+        "from": 713,
+        "durationFrames": 42,
+        "energy": "low",
+        "hero": false,
+        "napas": true,
+        "segment": "chain",
+        "voWords": null,
+        "visual": {
+          "type": "bg",
+          "slot": 1,
+          "motion": "drift"
+        },
+        "caption": {
+          "style": "none"
+        },
+        "transitionIn": "dissolve",
+        "transitionSec": 0.7,
+        "verb": null
+      },
+      {
+        "id": "s6",
+        "from": 755,
+        "durationFrames": 140,
+        "energy": "medium",
+        "hero": false,
+        "napas": false,
+        "segment": "chain",
+        "voWords": [
+          14,
+          16
+        ],
+        "visual": {
+          "type": "bg",
+          "slot": 1,
+          "motion": "kenburns"
+        },
+        "caption": {
+          "style": "karaoke"
+        },
+        "transitionIn": "fade",
+        "transitionSec": 0.5,
+        "verb": null
+      },
+      {
+        "id": "s7",
+        "from": 896,
+        "durationFrames": 94,
+        "energy": "medium",
+        "hero": false,
+        "napas": false,
+        "segment": "chain",
+        "voWords": [
+          17,
+          18
+        ],
+        "visual": {
+          "type": "bg",
+          "slot": 2,
+          "motion": "kenburns"
+        },
+        "caption": {
+          "style": "karaoke"
+        },
+        "transitionIn": "cut",
+        "transitionSec": 0.0,
+        "verb": null
+      },
+      {
+        "id": "s7n",
+        "from": 989,
+        "durationFrames": 42,
+        "energy": "low",
+        "hero": false,
+        "napas": true,
+        "segment": "chain",
+        "voWords": null,
+        "visual": {
+          "type": "bg",
+          "slot": 3,
+          "motion": "drift"
+        },
+        "caption": {
+          "style": "none"
+        },
+        "transitionIn": "dissolve",
+        "transitionSec": 0.7,
+        "verb": null
+      },
+      {
+        "id": "s8",
+        "from": 1031,
+        "durationFrames": 186,
+        "energy": "medium",
+        "hero": false,
+        "napas": false,
+        "segment": "chain",
+        "voWords": [
+          19,
+          22
+        ],
+        "visual": {
+          "type": "bg",
+          "slot": 3,
+          "motion": "kenburns"
+        },
+        "caption": {
+          "style": "karaoke"
+        },
+        "transitionIn": "fade",
+        "transitionSec": 0.5,
+        "verb": null
+      },
+      {
+        "id": "s9",
+        "from": 1217,
+        "durationFrames": 100,
+        "energy": "low",
+        "hero": true,
+        "napas": false,
+        "segment": "closer",
+        "voWords": [
+          23,
+          24
+        ],
+        "visual": {
+          "type": "bg",
+          "slot": 0,
+          "motion": "kenburns"
+        },
+        "caption": {
+          "style": "karaoke"
+        },
+        "transitionIn": "dissolve",
+        "transitionSec": 0.7,
+        "verb": null
+      },
+      {
+        "id": "s10",
+        "from": 1317,
+        "durationFrames": 134,
+        "energy": "low",
+        "hero": true,
+        "napas": false,
+        "segment": "closer",
+        "voWords": [
+          25,
+          27
+        ],
+        "visual": {
+          "type": "bg",
+          "slot": 1,
+          "motion": "kenburns"
+        },
+        "caption": {
+          "style": "karaoke"
+        },
+        "transitionIn": "dissolve",
+        "transitionSec": 0.7,
+        "verb": null
+      }
+    ],
+    "meta": {
+      "niche": "semesta",
+      "tone": "reverent",
+      "fps": 30,
+      "width": 1080,
+      "height": 1920,
+      "voDurationSec": 46.23,
+      "durationSec": 48.39,
+      "hookText": "",
+      "outroText": "",
+      "energyArc": [
+        {
+          "id": "hook",
+          "share": 0.1,
+          "energy": "high"
+        },
+        {
+          "id": "setup",
+          "share": 0.14,
+          "energy": "medium"
+        },
+        {
+          "id": "chain",
+          "share": 0.6,
+          "energy": "medium"
+        },
+        {
+          "id": "closer",
+          "share": 0.16,
+          "energy": "low"
+        }
+      ],
+      "holdTable": {
+        "base": 3.5,
+        "min": 2.5,
+        "max": 6.0
+      },
+      "beats": false,
+      "theme": "space"
+    }
+  },
+  "beats": null,
+  "wordFrames": [
+    [
+      0,
+      46
+    ],
+    [
+      46,
+      92
+    ],
+    [
+      92,
+      150
+    ],
+    [
+      160,
+      207
+    ],
+    [
+      207,
+      253
+    ],
+    [
+      253,
+      287
+    ],
+    [
+      298,
+      344
+    ],
+    [
+      344,
+      390
+    ],
+    [
+      390,
+      436
+    ],
+    [
+      436,
+      494
+    ],
+    [
+      505,
+      551
+    ],
+    [
+      561,
+      607
+    ],
+    [
+      607,
+      654
+    ],
+    [
+      654,
+      700
+    ],
+    [
+      710,
+      756
+    ],
+    [
+      756,
+      802
+    ],
+    [
+      802,
+      849
+    ],
+    [
+      859,
+      905
+    ],
+    [
+      905,
+      951
+    ],
+    [
+      962,
+      1008
+    ],
+    [
+      1008,
+      1054
+    ],
+    [
+      1054,
+      1100
+    ],
+    [
+      1100,
+      1147
+    ],
+    [
+      1157,
+      1203
+    ],
+    [
+      1203,
+      1249
+    ],
+    [
+      1260,
+      1306
+    ],
+    [
+      1306,
+      1352
+    ],
+    [
+      1352,
+      1387
+    ]
+  ],
+  "safeArea": {
+    "top": 260,
+    "bottom": 320
+  },
+  "envelope": {
+    "in": 0.35,
+    "minHold": 0.8,
+    "out": 0.25
+  }
+}
